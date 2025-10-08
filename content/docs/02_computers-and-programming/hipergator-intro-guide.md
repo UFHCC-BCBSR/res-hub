@@ -4,7 +4,7 @@ category = "Computing"
 +++
 Portions copied and adapted from [https://wiki.weecology.org/](https://wiki.weecology.org/docs/computers-and-programming/hipergator-intro-guide/)
 
-## So you want to run your analysis on HiperGator
+## Want to run your analysis on HiperGator?
 
 ## Introduction
 This guide gives a high level overview of how to run bioinformatics pipelines, R, or python scripts on a high performance cluster (HPC). Getting familiar with HPC and HiperGator in particular is a learning curve if you are starting from zero, but can be worth it depending on your computational needs. The expected user is someone who has basic familiarity with linux and CLI but no HPC experience.
