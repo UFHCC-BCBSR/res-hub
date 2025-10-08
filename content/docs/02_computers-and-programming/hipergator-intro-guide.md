@@ -2,12 +2,12 @@
 title = "HiPerGator Intro Guide"
 category = "Computing"
 +++
-This section copied and adapted from [https://wiki.weecology.org/](https://wiki.weecology.org/docs/computers-and-programming/hipergator-intro-guide/)
+Portions copied and adapted from [https://wiki.weecology.org/](https://wiki.weecology.org/docs/computers-and-programming/hipergator-intro-guide/)
 
 ## So you want to run your analysis on HiperGator
 
 ## Introduction
-This guide gives a high level overview of how one goes about running bioinformatics pipelines, R, or python scripts on a high performance cluster (HPC). Getting familiar with HPC and HiperGator in particular is a learning curve if you are starting from zero, but can be worth it depending on your computational needs. The expected user is someone who has basic familiarity with linux and CLI but no HPC experience.
+This guide gives a high level overview of how to run bioinformatics pipelines, R, or python scripts on a high performance cluster (HPC). Getting familiar with HPC and HiperGator in particular is a learning curve if you are starting from zero, but can be worth it depending on your computational needs. The expected user is someone who has basic familiarity with linux and CLI but no HPC experience.
 
 This is written for users of the [UFL HiperGator](https://docs.rc.ufl.edu/), but some information will apply to potential users for any HPC system and with any scripting language.
 
@@ -15,14 +15,16 @@ This is written for users of the [UFL HiperGator](https://docs.rc.ufl.edu/), but
 There are two scenarios where you may want to run your bioinformatics analysis on the HPC.
 
 1. **Your analysis takes a very long time to run**  
-If your pipeline is taking several hours, days or more to run on your personal computer then using an HPC is likely a good option for two reasons. One is the servers on an HPC have processors much faster than desktops and laptops, so with minimal changes your code will run significantly faster. Second is scripts on an HPC run independently of your personal computer, so you can shutdown your personal computer while the analysis runs overnight or over the weekend. HPC systems can have a time limit of several weeks to a month for any single job.
+If your pipeline is taking several hours, days or more to run on your personal computer then using an HPC is likely a good option for two reasons:
 
-If your analysis takes so long that it seems like it will never finish then an HPC can be especially beneficial. Say you do a test run on a small subset of your sequencing data and it takes 2 days to run. Theoretically it will then take 200 days to run on your full dataset. In this case the benefit of the HPC is its parallel processing power.
+    1) The servers on an HPC have processors much faster than desktops and laptops, so with minimal changes your code will run significantly faster
 
-By default most bioinformatics tools, R and python scripts run on a single processor. Most computers today have 4-8 processors though. And HPC servers have upwards of 64. If you spread the work out to multiple processors you can significantly decrease the amount of time it takes to run. For example: a genome assembly that takes 8 hours to run can potentially take 4 hours with 2 processors, or 2 hours with 4 processors, and so on. There is computational overhead with parallel processing though so halving the time with a doubling of the number of processors is only a general rule. This is not a straightforward change to your pipeline though and it will take time. See below about making analyses parallel and whether it's even worth it.
+    2) Run analyses independently of your personal computer, so you can shutdown your personal computer while the analysis runs overnight or over the weekend. HPC systems can have a time limit of several weeks to a month for any single job.
+
+    3) Parallel processing power. HPC servers have upwards of 64 cores (compared to ~4-8 on personal computers). This is a huge benefit for bioinformatics work either by running processes as multi-threaded (this is a requirement for many bioinformatics tasks like sequence assembly). In addition, you can manually spread the work out to multiple processors. For example, if you need to run FastQC on 96 samples, you can write an sbatch script to run the same command on all samples at the same time by starting 96 jobs (or 24 jobs with 4 samples in each). See https://docs.rc.ufl.edu/scheduler/job_arrays/
 
 2. **Your analysis fills up your computer's memory and crashes when it runs.**  
-When you have large genomic datasets, such as whole genome sequencing files, RNA-seq data, or large variant call files, it's easy to use up all the memory and freeze your computer or may not even be possible to store and process data on your local machine. Just like HPC servers have powerful processors, they also have extremely large amounts of memory. Usually greater than 100GB and up to several TB. There is a good chance that they can handle whatever large datasets you throw at them.
+When you have large genomic datasets, such as whole genome sequencing files, RNA-seq data, or large variant call files, it's easy to use up all the memory and freeze your computer or may not even be possible to store and process data on your local machine. Just like HPC servers have powerful processors, they also have extremely large amounts of memory. Usually greater than 100GB and up to several TB. They can handle whatever large datasets you throw at them.
 
 ## Should I bother with an HPC?
 
@@ -31,8 +33,6 @@ Your analysis and data can be of _any_ size. There is no minimum computational r
 Consider an example where you have a script that takes 1 hour on your laptop, and you must run it once a month. It's likely reasonable to just keep that workflow. But if a genome assembly takes 10 hours and you must run it once a week, then it's worth considering doing it on an HPC. Especially since that will decrease the wear and tear on your laptop and free up that 10 hours for other uses.
 
 Whether it's worth it or not is unique to every situation. Also remember that once you learn all the HPC basics the first time, then that time cost isn't needed for your next project.
-
-Also consider that the two use cases described above might also be solvable by algorithm optimization or using more efficient bioinformatics tools. If you can find a bottleneck in your pipeline and optimize it to run fast enough to meet your needs, that is preferable over running the code on an HPC.
 
 ## What exactly is an HPC?
 A high performance cluster (HPC) is primarily two things.
