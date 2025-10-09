@@ -1,6 +1,7 @@
 ---
 title: "ST4US Journal Club Discussion Questions"
 linkTitle: "ST4US Journal Club Discussion Questions"
+hidden: true
 summary: >
   Discussion guide for Statistical Power Analysis in Transcriptomics - UF Health Cancer Center BCB-SR Bioinformatics Unit
 ---
