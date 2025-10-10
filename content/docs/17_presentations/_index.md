@@ -25,7 +25,7 @@ We present on topics in bioinformatics, tool demos, and original research, as we
 #### Power Analysis
 **Presenter:** Dr. Heather Kates, Bioinformatician, UFHCC BCB-SR  
 **Contact:** [UFHCC-BCB-SR@ad.ufl.edu](mailto:UFHCC-BCB-SR@ad.ufl.edu)  
-**Materials:** [Presentation Slides](presentations/st4us-power-presentation.html)
+**Materials:** [Presentation Slides](https://ufhcc-bcbsr.github.io/hub/presentations/st4us-power-presentation.html)
 
 
 
