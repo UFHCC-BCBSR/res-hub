@@ -20,7 +20,7 @@ We present on topics in bioinformatics, tool demos, and original research, as we
 #### Slide-seq
 **Presenter:** Dayuan Wang, Doctoral student in Biostatistics, University of Florida  
 **Contact:** [dayuan.wang@ufl.edu](mailto:dayuan.wang@ufl.edu)  
-**Materials:** [Presentation recording](link)
+**Materials:** Presentation recording *(coming soon)*
 
 #### Power Analysis
 **Presenter:** Dr. Heather Kates, Bioinformatician, UFHCC BCB-SR  
