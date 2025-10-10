@@ -69,3 +69,7 @@ summary: >
 
 **Discussion Questions**
 [Discussion Questions](https://ufhcc-bcbsr.github.io/hub/docs/19_blog/discussion-questions/) - *Structured questions to guide journal club conversations*
+
+**Slides**
+<!-- [Presentation Slides](https://ufhcc-bcbsr.github.io/hub/presentations/st4us-power-presentation.html) -->
+*Coming soon*
