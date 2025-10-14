@@ -72,7 +72,7 @@ features:
   privacy_pack:
     enable: false
   repository:
-    url: 'https://github.com/UFHCC-BCBSR/hub'
+    url: 'https://github.com/UFHCC-BCBSR/res-hub'
     content_dir: content
     branch: main
   comment:
