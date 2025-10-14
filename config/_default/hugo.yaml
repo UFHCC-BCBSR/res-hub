@@ -4,7 +4,7 @@
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 title: 'UFHCC BCB-SR Bioinformatics Hub' # Website name
-baseURL: 'https://ufhcc-bcbsr.github.io/hub/' # Website URL
+baseURL: 'https://ufhcc-bcbsr.github.io/res-hub/' # Website URL
 publishDir: "public"
 
 ############################
