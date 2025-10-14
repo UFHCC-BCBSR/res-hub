@@ -68,8 +68,8 @@ summary: >
 [Sample size calculation while controlling false discovery rate for differential expression analysis with RNA-sequencing experiments](https://doi.org/10.1186/s12859-016-0994-9)
 
 **Discussion Questions**
-[Discussion Questions](https://ufhcc-bcbsr.github.io/hub/docs/19_blog/discussion-questions/) - *Structured questions to guide journal club conversations*
+[Discussion Questions](https://ufhcc-bcbsr.github.io/res-hub/docs/19_blog/discussion-questions/) - *Structured questions to guide journal club conversations*
 
 **Slides**
-[Presentation Slides](https://ufhcc-bcbsr.github.io/hub/presentations/st4us-power-v2.html)
+[Presentation Slides](https://ufhcc-bcbsr.github.io/res-hub/presentations/st4us-power-v2.html)
 *Coming soon*
