@@ -8,27 +8,27 @@ summary: >
 
 ## Spatial Transcriptomics Journal Club
 
-*The UFHCC BCB-SR hosts a monthly spatial transcriptomics journal club.*
+_The UFHCC BCB-SR hosts a monthly spatial transcriptomics journal club._
 
 ### Power Analysis Topic
 
-**General Power Analysis:**
-[Power Analysis for Designing Bulk, Single-Cell, and Spatial Transcriptomics Experiments: Review, Tutorial, and P>
+**General Power Analysis:**  
+[Power Analysis for Designing Bulk, Single-Cell, and Spatial Transcriptomics Experiments: Review, Tutorial, and Perspectives](https://doi.org/10.3390/biom13020221)
 
-**ST Power Analysis:**
-[PoweREST: Statistical power estimation for spatial transcriptomics experiments to detect differentially expresse>
+**ST Power Analysis:**  
+[PoweREST: Statistical power estimation for spatial transcriptomics experiments to detect differentially expressed genes between two conditions](https://doi.org/10.1371/journal.pcbi.1013293)
 
 **scRNA-seq Power Analysis:**
-- [Maximizing statistical power to detect differentially abundant cell states with scPOST](https://doi.org/10.101>
-- [scPower accelerates and optimizes the design of multi-sample single cell transcriptomic studies](https://doi.o>
+- [Maximizing statistical power to detect differentially abundant cell states with scPOST](https://doi.org/10.1016/j.crmeth.2021.100120)
+- [scPower accelerates and optimizes the design of multi-sample single cell transcriptomic studies](https://doi.org/10.1038/s41467-021-26779-7)
 
-**Bulk RNA-seq Power Analysis:**
-[Sample size calculation while controlling false discovery rate for differential expression analysis with RNA-seq>
+**Bulk RNA-seq Power Analysis:**  
+[Sample size calculation while controlling false discovery rate for differential expression analysis with RNA-sequencing experiments](https://doi.org/10.1186/s12859-016-0994-9)
 
-**Discussion Questions**
-[Discussion Questions](https://ufhcc-bcbsr.github.io/res-hub/docs/19_blog/discussion-questions/) - *Structured qu>
+**Discussion Questions:**  
+[Discussion Questions](https://ufhcc-bcbsr.github.io/res-hub/docs/19_blog/discussion-questions/) - _Structured questions to guide journal club conversations_
 
-**Slides**
+**Slides:**  
 [Presentation Slides](https://ufhcc-bcbsr.github.io/res-hub/presentations/st4us-power-v2.html)
 
 ---
