@@ -13,7 +13,7 @@ sections:
       text: Dynamic documentation for how to navigate bioinformatics with the UFHCC BCB-SR (and beyond!)
       primary_action:
         text: Browse the hub
-        url: /hub/docs/
+        url: /res-hub/docs/
         icon: rocket-launch
     design:
       spacing:
