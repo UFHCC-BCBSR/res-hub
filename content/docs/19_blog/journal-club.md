@@ -38,7 +38,7 @@ _The UFHCC BCB-SR hosts a monthly spatial transcriptomics journal club._
 [Presentation by Dr. Jeff Bylund, Senior Science & Technology Advisor, 10X Genomics](https://cancer.ufl.edu/events/20032/spatial-transcriptomics-for-us-st4us-journal-club/1764957600/) 
 
 **Presentation Recording:**  
-[Recording]() - _only accessible when logged into Dropbox with UF e-mail_
+[Recording](https://www.dropbox.com/scl/fi/tqqlohsoesco8wv2821xj/St4us-20251204-recording-10xXenium.mp4?rlkey=015gogh2qxei4d8asiulim9uy&dl=0) - _only accessible when logged into Dropbox with UF e-mail_
 
 **Papers from the Presentation:**  
 [Optimizing Xenium In Situ data utility by quality assessment and best-practice analysis workflows](https://www.nature.com/articles/s41592-025-02617-2)
