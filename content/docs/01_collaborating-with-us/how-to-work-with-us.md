@@ -12,7 +12,7 @@ summary: >
 - [Kalyanee Shirlekar, MS, Bioinformatics Analyst III](https://directory.ufhealth.org/shirlekar-kalyanee)
 
 
-## Why UF Health Cancer Center BCB-SR?
+## Why UF Health Cancer Institute BCB-SR?
 
 Each of us at BCB-SR Bioinformatics is driven by the mission to bridge the gap between data and discovery. We are all trained as biologists as well as bioinformaticians, and take a biology-first view of bioinformatics analysis.
 

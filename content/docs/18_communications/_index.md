@@ -7,7 +7,7 @@ summary: >
 
 ## Join our distribution e-mail list!
 
-We use a distribution list to send news & updates relevant to UF Health Cancer Center members interested in bioinformatics. 
+We use a distribution list to send news & updates relevant to UF Health Cancer Institute members interested in bioinformatics. 
 
 To be added to the e-mail list, send an email to `ufhcc-bcb-sr [at] ufl [dot] edu` with the subject "Bioinformatics e-mail list".
 
