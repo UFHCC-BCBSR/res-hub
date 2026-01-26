@@ -1,6 +1,6 @@
 ---
-title: "Analysis of Omics Data by Assay"
-linkTitle: "Analysis of Omics Data by Assay"
+title: "Omics Data Analysis by Assay"
+linkTitle: "Omics Data Analysis by Assay"
 weight: 10
 summary: >
   
