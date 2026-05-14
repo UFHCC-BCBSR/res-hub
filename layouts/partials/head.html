@@ -1,7 +1,0 @@
-{{/* layouts/partials/head.html */}}
-{{ $style := resources.Get "css/main.css" | postCSS (dict "config" "./postcss.config.js") | minify }}
-<link rel="stylesheet" href="{{ $style.RelPermalink }}">
-
-{{/* Include the rest of the default head partial from Hugo Blox if needed */}}
-{{ partial "blox-core/head" . }}
-
