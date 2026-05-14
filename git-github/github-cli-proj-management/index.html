@@ -1,0 +1,2855 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Resources, guides, and documentation for the UFHCC BCBSR">
+      
+      
+      
+      
+        <link rel="prev" href="../github-actions/">
+      
+      
+        <link rel="next" href="../rstudio-git-integration/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Project Management using GitHub cli and Github.com Projects - UFHCC Biostatistics and Computational Biology Shared Resource</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ai-assisted-optional-github-repository-and-project-setup-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="UFHCC Biostatistics and Computational Biology Shared Resource" class="md-header__button md-logo" aria-label="UFHCC Biostatistics and Computational Biology Shared Resource" data-md-component="logo">
+      
+  <img src="../../assets/images/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UFHCC Biostatistics and Computational Biology Shared Resource
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Project Management using GitHub cli and Github.com Projects
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="UFHCC Biostatistics and Computational Biology Shared Resource" class="md-nav__button md-logo" aria-label="UFHCC Biostatistics and Computational Biology Shared Resource" data-md-component="logo">
+      
+  <img src="../../assets/images/icon.png" alt="logo">
+
+    </a>
+    UFHCC Biostatistics and Computational Biology Shared Resource
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collaborating With Us
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Collaborating With Us
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../collaborating/who-we-are/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Who We Are
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../collaborating/how-to-work-with-us/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to Work With Us
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HiPerGator
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    HiPerGator
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hipergator/hipergator-intro-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intro Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hipergator/file-naming-conventions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Naming Conventions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hipergator/hipergator-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HiPerGator Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git & GitHub
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Git & GitHub
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-collaboration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git Collaboration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git Tips
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub Actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub CLI & Project Management
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub CLI & Project Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-create-local-directory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Create Local Directory Structure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Create Local Directory Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-ai-chatbot-assistance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using AI Chatbot Assistance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rstudio-git-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RStudio Git Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Command Line
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Command Line
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../command-line/ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../command-line/file-compression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Compression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    R & Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    R & Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r-python/r-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    R Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r-python/lab-coding-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Coding Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r-python/lab-code-style-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Code Style Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r-python/parallelization-R/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parallelization in R
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r-python/python-package-documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python Package Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r-python/software-testing-R/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software Testing in R
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Managers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Workflow Managers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workflow-managers/workflow-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experimental Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Experimental Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experimental-design/RNA-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RNA-seq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experimental-design/ATAC-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ATAC-seq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experimental-design/scRNA-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scRNA-seq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis-pipelines/RNA-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RNA-seq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis-pipelines/ATAC-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ATAC-seq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis-pipelines/scRNA-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scRNA-seq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis-pipelines/CRISPR-Screen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRISPR Screen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis-pipelines/cut-and-run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CUT&RUN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis-pipelines/spatial-visium-v2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spatial Visium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Downstream Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Downstream Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../downstream-analysis/pathway-enrichment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pathway Enrichment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Sharing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Sharing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-sharing/globus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Globus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-sharing/rclone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rclone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grant Writing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Grant Writing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grant-writing/bioinfo-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bioinformatics Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grant-writing/DMSP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DMSP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grant-writing/key-personnel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key Personnel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grant-writing/publication-figures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publication Figures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publishing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Publishing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publishing/authorship/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authorship
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publishing/code-availability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code Availability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publishing/data-availability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Availability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publishing/publication-figures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publication Figures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/bioinfo-blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bioinformatics Blogs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/journal-club/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Journal Club
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/discussion-questions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discussion Questions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ai-assisted-optional-github-repository-and-project-setup-guide">AI-Assisted (optional) GitHub Repository and Project Setup Guide</h1>
+<p>This guide documents the process of using AI chatbots (particularly Claude via chat.it.ufl.edu) to create and organize a research project with GitHub repositories, issues, and project boards.</p>
+<p>You can follow this same workflow without AI chatbots and manually create the scripts below based on the example templates provided.</p>
+<p>Unless your project is very simple or in a very well-documented one-size-fits-all area, you will certainly need to edit the scripts and/or resulting outputs below, but this makes starting and getting organized more efficient and thorough.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>On HiPerGator:
+```bash
+ml github-cli
+```</p>
+<h2 id="step-1-create-local-directory-structure">Step 1: Create Local Directory Structure</h2>
+<h3 id="using-ai-chatbot-assistance">Using AI Chatbot Assistance</h3>
+<ol>
+<li>Go to <a href="https://chat.it.ufl.edu">chat.it.ufl.edu</a></li>
+<li>Use Claude (preferred) with a prompt like:</li>
+</ol>
+<p>```
+I'm starting a research project analyzing [your data type]. I have:
+- Data: [describe your data sources and formats]
+- Goal: [your analysis objectives]
+- Tools: [programming language, packages, libraries you plan to use]</p>
+<p>Please create a bash script called make-dirs.sh that will:
+1. Create an organized directory structure for this project
+2. Include checks to avoid overwriting existing directories
+3. Include safety prompts before creating directories
+4. Create placeholder files for documentation and environment configs
+5. Use best practices for data management and security</p>
+<p>The structure should support reproducible research with clear separation of:
+- Raw data (never modified)
+- Processed/intermediate data
+- Scripts/code organized by analysis phase
+- Results (figures, tables, reports)
+- Documentation
+- Environment specifications
+```</p>
+<h3 id="example-output">Example Output</h3>
+<p>```bash</p>
+<h1 id="binbash">!/bin/bash</h1>
+<h1 id="create-directory-structure-for-research-project">Create directory structure for research project</h1>
+<h1 id="safety-check">Safety check</h1>
+<p>if [ -d "data" ] || [ -d "scripts" ] || [ -d "results" ]; then
+    echo "Warning: Some directories already exist!"
+    read -p "Continue anyway? (y/n) " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        exit 1
+    fi
+fi</p>
+<h1 id="create-main-structure">Create main structure</h1>
+<p>mkdir -p {data/{raw,processed,metadata},scripts/{01_preprocessing,02_analysis,03_visualization},results/{figures,tables,reports},docs,environment}</p>
+<h1 id="create-placeholder-files">Create placeholder files</h1>
+<p>touch environment/requirements.txt
+touch environment/conda_env.yml
+touch environment/session_info.txt
+touch docs/methods.md
+touch docs/data_dictionary.md
+touch docs/analysis_notes.md
+touch README.md</p>
+<p>echo "Directory structure created successfully!"
+echo "Run 'tree -L 2' to view the structure"
+```</p>
+<h3 id="execute-the-script">Execute the Script</h3>
+<p>```bash
+bash make-dirs.sh
+tree -L 2
+```</p>
+<h2 id="step-2-create-github-repository-using-github-cli">Step 2: Create GitHub Repository using GitHub CLI</h2>
+<h3 id="first-time-github-cli-authentication">First-Time GitHub CLI Authentication</h3>
+<ol>
+<li>
+<p><strong>Load GitHub CLI module</strong> (on HiPerGator):
+```bash
+ml github-cli
+```</p>
+</li>
+<li>
+<p><strong>Authenticate GitHub CLI</strong> (one-time setup):
+```bash
+gh auth login
+```</p>
+</li>
+</ol>
+<p>Follow the prompts:
+- Choose: GitHub.com
+- Protocol: HTTPS
+- Authenticate with: Login with a web browser
+- Copy the one-time code shown
+- Press Enter to open the browser (or manually go to github.com/login/device)
+- Paste the code and authorize</p>
+<p>Your credentials are now stored and you won't need to authenticate again on this system.</p>
+<h3 id="create-the-remote-repository">Create the Remote Repository</h3>
+<p>```bash</p>
+<h1 id="initialize-local-git-repo">Initialize local git repo</h1>
+<p>git init</p>
+<h1 id="create-remote-repository-on-github">Create remote repository on GitHub</h1>
+<h1 id="on-your-personal-account">On your personal account</h1>
+<p>gh repo create my-research-project --public --source=. --remote=origin</p>
+<h1 id="in-an-organization">In an organization</h1>
+<p>gh repo create the-org/my-research-project --public --source=. --remote=origin</p>
+<h1 id="alternative-create-private-repo">Alternative: create private repo</h1>
+<p>gh repo create my-research-project --private --source=. --remote=origin
+```</p>
+<p>Options:
+- <code>--public</code> or <code>--private</code>: set visibility
+- <code>--source=.</code>: use current directory as source
+- <code>--remote=origin</code>: set up origin remote
+- <code>--description "Brief project description"</code>: add description</p>
+<h3 id="initial-commit">Initial Commit</h3>
+<h3 id="initial-commit_1">Initial Commit</h3>
+<ol>
+<li><strong>Create a .gitignore file</strong></li>
+</ol>
+<p>Open a text editor and create a file called <code>.gitignore</code> in your project root:</p>
+<p>```bash
+nano .gitignore</p>
+<h1 id="or">or</h1>
+<p>vim .gitignore</p>
+<h1 id="or-use-any-text-editor">or use any text editor</h1>
+<p>```</p>
+<ol>
+<li><strong>Add patterns to .gitignore</strong> (as needed for your repo content):</li>
+</ol>
+<p>```</p>
+<h1 id="data-files-omit-data-if-it-is-protectedsensitive-or-large">Data files (omit data if it is protected/sensitive or large)</h1>
+<p>data/raw/<em>
+data/processed/</em>
+!data/raw/.gitkeep
+!data/processed/.gitkeep</p>
+<h1 id="environment">Environment</h1>
+<p>.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+<em>.Rproj
+<strong>pycache</strong>/
+</em>.pyc
+.venv/
+env/
+```</p>
+<p><strong>What these patterns mean:</strong>
+- <code>data/raw/*</code> - ignores all files in the data/raw directory
+- <code>!data/raw/.gitkeep</code> - EXCEPT the .gitkeep file (so the empty directory structure is preserved)</p>
+<p>Save and close the file.</p>
+<ol>
+<li><strong>Create .gitkeep files</strong> (these are empty placeholder files to preserve directory structure in git):</li>
+</ol>
+<p>```bash
+touch data/raw/.gitkeep
+touch data/processed/.gitkeep
+touch results/figures/.gitkeep
+```</p>
+<ol>
+<li><strong>Stage all files:</strong></li>
+</ol>
+<p>```bash
+git add .
+```</p>
+<ol>
+<li><strong>Create initial commit:</strong></li>
+</ol>
+<p>```bash
+git commit -m "Initial commit: directory structure and documentation"
+```</p>
+<ol>
+<li><strong>Push to GitHub:</strong></li>
+</ol>
+<p>```bash
+git push -u origin main
+```
+```</p>
+<h2 id="step-3-create-issues-with-ai-assistance">Step 3: Create Issues with AI Assistance</h2>
+<h3 id="using-ai-to-generate-issues-script">Using AI to Generate Issues Script</h3>
+<p>Again, AI assistance is optional here. You may refer to this template and write your own, or prompt an AI chatbot and edit the result.</p>
+<p>Prompt the chatbot with:</p>
+<p>```
+I need to create GitHub issues for my project. Here's my plan:</p>
+<p>Project Goal: [your overall objective]</p>
+<p>Milestones/Phases:
+1. [Phase name]: [description]
+2. [Phase name]: [description]
+...</p>
+<p>For each phase, I need issues that:
+- Have clear, actionable tasks with checkboxes
+- Include acceptance criteria
+- Are labeled appropriately (data-prep, analysis, QC, documentation, etc.)
+- Are assigned to the correct milestone
+- Flag any blockers or dependencies</p>
+<p>Please create a bash script called make-issues.sh that uses GitHub CLI to:
+1. Create appropriate labels with colors
+2. Create milestones for each phase
+3. Create detailed issues for each task
+4. Handle errors gracefully (if labels/milestones already exist)</p>
+<p>Current blockers: [mention any data/access/dependencies you're waiting on]
+```</p>
+<h3 id="example-output-make-issuessh">Example Output: make-issues.sh</h3>
+<p>```bash</p>
+<h1 id="binbash_1">!/bin/bash</h1>
+<p>echo "=========================================="
+echo "Setting up Project Issues"
+echo "=========================================="
+echo ""</p>
+<h1 id="create-labels">Create labels</h1>
+<p>echo "📋 Creating labels..."
+gh label create "data-prep" --color "0052CC" --description "Data organization" 2&gt;/dev/null || true
+gh label create "analysis" --color "5319E7" --description "Analysis tasks" 2&gt;/dev/null || true
+gh label create "documentation" --color "0E8A16" --description "Documentation" 2&gt;/dev/null || true
+gh label create "QC" --color "FBCA04" --description "Quality control" 2&gt;/dev/null || true
+gh label create "visualization" --color "C2E0C6" --description "Figures and plots" 2&gt;/dev/null || true
+gh label create "priority" --color "B60205" --description "High priority" 2&gt;/dev/null || true
+gh label create "blocked" --color "D93F0B" --description "Blocked/waiting" 2&gt;/dev/null || true
+echo "✅ Labels created!"
+echo ""</p>
+<h1 id="create-milestones">Create milestones</h1>
+<p>echo "🎯 Creating milestones..."
+gh api repos/:owner/:repo/milestones \
+  -f title="Phase 1: Data Organization" \
+  -f description="Collect and organize raw data" \
+  2&gt;/dev/null || echo "  Milestone already exists"</p>
+<p>gh api repos/:owner/:repo/milestones \
+  -f title="Phase 2: Preprocessing" \
+  -f description="Clean and prepare data for analysis" \
+  2&gt;/dev/null || echo "  Milestone already exists"</p>
+<p>gh api repos/:owner/:repo/milestones \
+  -f title="Phase 3: Analysis" \
+  -f description="Main statistical analysis" \
+  2&gt;/dev/null || echo "  Milestone already exists"</p>
+<p>gh api repos/:owner/:repo/milestones \
+  -f title="Phase 4: Visualization" \
+  -f description="Create figures and reports" \
+  2&gt;/dev/null || echo "  Milestone already exists"
+echo "✅ Milestones ready!"
+echo ""</p>
+<h1 id="create-issues">Create issues</h1>
+<p>echo "🎫 Creating issues..."
+echo ""</p>
+<h1 id="issue-1">Issue 1</h1>
+<p>echo "  Creating Issue #1: Data organization"
+gh issue create \
+  --title "Phase 1: Set up data directory and download raw data" \
+  --label "data-prep,priority" \
+  --milestone "Phase 1: Data Organization" \
+  --body "## Tasks
+- [ ] Run directory creation script
+- [ ] Download raw data from [source]
+- [ ] Verify data integrity (checksums if available)
+- [ ] Create data dictionary in docs/data_dictionary.md
+- [ ] Document data provenance in README</p>
+<h2 id="acceptance-criteria">Acceptance Criteria</h2>
+<ul>
+<li>All raw data files present in data/raw/</li>
+<li>Data dictionary complete with variable descriptions</li>
+<li>README documents data source and download date</li>
+<li>No manual modifications to raw data"</li>
+</ul>
+<h1 id="issue-2">Issue 2</h1>
+<p>echo "  Creating Issue #2: Environment setup"
+gh issue create \
+  --title "Phase 1: Configure computational environment" \
+  --label "data-prep,documentation" \
+  --milestone "Phase 1: Data Organization" \
+  --body "## Tasks
+- [ ] Create requirements.txt or conda_env.yml
+- [ ] List all package versions
+- [ ] Test environment on clean install
+- [ ] Document system requirements in README</p>
+<h2 id="acceptance-criteria_1">Acceptance Criteria</h2>
+<ul>
+<li>Environment file includes all dependencies with versions</li>
+<li>README has installation instructions</li>
+<li>Environment reproducible from file alone"</li>
+</ul>
+<h1 id="issue-3">Issue 3</h1>
+<p>echo "  Creating Issue #3: Data preprocessing"
+gh issue create \
+  --title "Phase 2: Data cleaning and preprocessing" \
+  --label "analysis,QC" \
+  --milestone "Phase 2: Preprocessing" \
+  --body "## Tasks
+- [ ] Load and inspect raw data
+- [ ] Check for missing values
+- [ ] Check for outliers
+- [ ] Document all preprocessing decisions
+- [ ] Save processed data to data/processed/</p>
+<h2 id="quality-checks">Quality Checks</h2>
+<ul>
+<li>[ ] Verify no data loss during processing</li>
+<li>[ ] Check distributions before/after</li>
+<li>[ ] Document all filtering criteria</li>
+</ul>
+<h2 id="acceptance-criteria_2">Acceptance Criteria</h2>
+<ul>
+<li>Preprocessing script runs without errors</li>
+<li>Processed data saved with meaningful filename</li>
+<li>QC report generated with summary statistics"</li>
+</ul>
+<h1 id="issue-4-example-of-a-blocked-issue">Issue 4 - Example of a blocked issue</h1>
+<p>echo "  Creating Issue #4: Statistical analysis (BLOCKED)"
+gh issue create \
+  --title "Phase 3: Run statistical analysis" \
+  --label "analysis,blocked" \
+  --milestone "Phase 3: Analysis" \
+  --body "## ⚠️ BLOCKED
+Waiting for:
+- [ ] Preprocessed data (Issue #3)
+- [ ] Approval of analysis plan from PI</p>
+<h2 id="tasks">Tasks</h2>
+<ul>
+<li>[ ] Implement statistical tests</li>
+<li>[ ] Calculate effect sizes</li>
+<li>[ ] Perform multiple testing correction</li>
+<li>[ ] Generate results tables</li>
+</ul>
+<h2 id="acceptance-criteria_3">Acceptance Criteria</h2>
+<ul>
+<li>Analysis script documented with comments</li>
+<li>Results saved to results/tables/</li>
+<li>Methods documented in docs/methods.md"</li>
+</ul>
+<p>echo ""
+echo "✅ All issues created!"
+echo ""
+echo "Next steps:"
+echo "1. Go to your repo on GitHub.com"
+echo "2. Click on 'Issues' to see all created issues"
+echo "3. Set up a Project board (see next section)"
+```</p>
+<h3 id="execute-the-issues-script">Execute the Issues Script</h3>
+<p>```bash
+bash make-issues.sh
+```</p>
+<p><strong>Note:</strong> The issues are created directly on GitHub.com via the GitHub API - they are NOT stored in <code>.git</code> locally. The <code>gh issue create</code> command immediately creates them in your remote repository.</p>
+<h2 id="step-4-create-github-project-board">Step 4: Create GitHub Project Board</h2>
+<p><strong>Important:</strong> The easiest way to create a Project board is through the GitHub.com web interface.</p>
+<h3 id="steps-to-create-project">Steps to Create Project</h3>
+<ol>
+<li><strong>Go to your repository on GitHub.com</strong></li>
+<li>
+<p>Navigate to: <code>https://github.com/your-username-or-org/your-repo-name</code></p>
+</li>
+<li>
+<p><strong>Access Projects tab</strong></p>
+</li>
+<li>Click on "Projects" in the repository menu</li>
+<li>
+<p>Click "Add project" → "New project"</p>
+</li>
+<li>
+<p><strong>Create new project</strong></p>
+</li>
+<li>Choose: <strong>"Start from scratch: Board"</strong> (recommended)</li>
+<li>Name: Use a descriptive name like "[Project Name] Task Board" or "[Project Name] Workflow"</li>
+<li>
+<p>Description: Brief description of project purpose</p>
+</li>
+<li>
+<p><strong>Set up columns</strong></p>
+</li>
+</ol>
+<p>Recommended column structure:
+   - <strong>Todo</strong>: New issues and upcoming tasks
+   - <strong>In Progress</strong>: Currently being worked on
+   - <strong>Blocked</strong>: Tasks waiting on external dependencies
+   - <strong>Done</strong>: Completed tasks</p>
+<p>To create columns:
+   - The default board comes with "Todo", "In Progress", and "Done"
+   - Click "+ Add column" to add "Blocked"
+   - Drag columns to reorder as needed</p>
+<ol>
+<li><strong>Link Project to Repository</strong></li>
+<li>In project settings (gear icon), go to "Settings"</li>
+<li>Under "Linked repositories", add your repository</li>
+<li>This enables automation features</li>
+</ol>
+<h3 id="configure-automation">Configure Automation</h3>
+<p>Once your project is linked to your repository:</p>
+<ol>
+<li><strong>Automatic issue addition</strong></li>
+<li>New issues automatically appear in "Todo" column</li>
+<li>
+<p>Can configure in Project settings → Workflows</p>
+</li>
+<li>
+<p><strong>Automatic status updates</strong></p>
+</li>
+<li>When you close an issue, it automatically moves to "Done"</li>
+<li>When you reopen an issue, it moves back to "Todo"</li>
+<li>
+<p>You can manually drag issues between columns</p>
+</li>
+<li>
+<p><strong>Set up workflows</strong> (optional but recommended)</p>
+</li>
+<li>Click "⋯" (three dots) in project menu → "Workflows"</li>
+<li>Enable "Auto-add to project" for new issues</li>
+<li>Enable "Auto-archive" for closed items after 7 days</li>
+</ol>
+<h3 id="project-naming-best-practices">Project Naming Best Practices</h3>
+<ul>
+<li>✅ <strong>Good names:</strong></li>
+<li>"[Project Name] Research Workflow"</li>
+<li>"[Project Name] Task Tracking Q1 2024"</li>
+<li>
+<p>"[Project Name] Analysis Pipeline"</p>
+</li>
+<li>
+<p>❌ <strong>Avoid:</strong></p>
+</li>
+<li>Generic names like "Project 1" or "Tasks"</li>
+<li>Names without context ("Pipeline")</li>
+<li>Overly long names</li>
+</ul>
+<h3 id="adding-issues-to-project">Adding Issues to Project</h3>
+<p>If issues were created before the project:</p>
+<p><strong>Option 1: Bulk add via Project interface</strong>
+1. Go to your Project board
+2. Click "+ Add item"
+3. Search for issues by number or title
+4. Click to add each one</p>
+<p><strong>Option 2: Add from issue page</strong>
+1. Open any issue
+2. On right sidebar, find "Projects"
+3. Select your project from dropdown
+4. Issue appears in "Todo" column</p>
+<p><strong>Option 3: Use GitHub CLI</strong>
+```bash</p>
+<h1 id="get-your-project-id">Get your project ID</h1>
+<p>gh project list</p>
+<h1 id="add-issue-to-project-requires-project-id">Add issue to project (requires project ID)</h1>
+<p>gh project item-add [PROJECT_ID] --owner [USERNAME] --url https://github.com/[USERNAME]/[REPO]/issues/[NUMBER]
+```</p>
+<h2 id="step-5-workflow-tips">Step 5: Workflow Tips</h2>
+<h3 id="working-with-issues">Working with Issues</h3>
+<p>```bash</p>
+<h1 id="list-all-open-issues">List all open issues</h1>
+<p>gh issue list</p>
+<h1 id="view-specific-issue">View specific issue</h1>
+<p>gh issue view 1</p>
+<h1 id="close-an-issue-moves-to-done-automatically">Close an issue (moves to Done automatically)</h1>
+<p>gh issue close 1 --comment "Completed all tasks"</p>
+<h1 id="reopen-an-issue">Reopen an issue</h1>
+<p>gh issue reopen 1</p>
+<h1 id="add-a-comment">Add a comment</h1>
+<p>gh issue comment 1 --body "Update on progress..."</p>
+<h1 id="assign-issue-to-yourself">Assign issue to yourself</h1>
+<p>gh issue edit 1 --add-assignee @me
+```</p>
+<h3 id="best-practices">Best Practices</h3>
+<ol>
+<li><strong>One task per issue</strong>: Keep issues focused and actionable</li>
+<li><strong>Use checklists</strong>: Break complex tasks into sub-tasks using <code>- [ ]</code> syntax</li>
+<li><strong>Link related issues</strong>: Reference other issues with <code>#number</code> (e.g., "Depends on #5")</li>
+<li><strong>Label consistently</strong>: Use labels to filter and organize</li>
+<li><strong>Update regularly</strong>: Comment on progress, move cards on project board</li>
+<li><strong>Close when done</strong>: Don't let completed issues linger open</li>
+<li><strong>Document blockers</strong>: If stuck, comment on what you're waiting for</li>
+</ol>
+<h3 id="updating-project-board">Updating Project Board</h3>
+<ul>
+<li><strong>Move cards manually</strong>: Drag issues between columns as status changes</li>
+<li><strong>Automatic movement</strong>: Issues auto-move to "Done" when closed via any method:</li>
+<li>Using <code>gh issue close</code></li>
+<li>Clicking "Close issue" on GitHub.com</li>
+<li>Via commit message: <code>git commit -m "Fix analysis bug (closes #3)"</code></li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="github-cli-authentication-issues">GitHub CLI Authentication Issues</h3>
+<p>```bash</p>
+<h1 id="check-authentication-status">Check authentication status</h1>
+<p>gh auth status</p>
+<h1 id="re-authenticate-if-needed">Re-authenticate if needed</h1>
+<p>gh auth logout
+gh auth login
+```</p>
+<h3 id="issues-not-appearing-in-project">Issues Not Appearing in Project</h3>
+<ul>
+<li>Verify project is linked to repository</li>
+<li>Check project settings → Workflows → Enable "Auto-add to project"</li>
+<li>Manually add existing issues from Project board</li>
+</ul>
+<h3 id="permission-errors">Permission Errors</h3>
+<ul>
+<li>Ensure you have write access to the repository</li>
+<li>For organization repos, check that Projects are enabled</li>
+</ul>
+<h2 id="summary-workflow">Summary Workflow</h2>
+<p>```bash</p>
+<h1 id="one-time-setup">One-time setup</h1>
+<p>ml github-cli                          # Load module (HiPerGator)
+gh auth login                          # Authenticate (first time only)</p>
+<h1 id="per-project-workflow">Per-project workflow</h1>
+<p>bash make-dirs.sh                      # Create directory structure
+git init                               # Initialize local repo
+gh repo create my-project --public --source=. --remote=origin  # Create remote
+git add .                              # Stage files
+git commit -m "Initial commit"         # Commit
+git push -u origin main                # Push to GitHub
+bash make-issues.sh                    # Create issues</p>
+<h1 id="then-go-to-githubcom-to-create-project-board-and-link-it">Then go to GitHub.com to create Project board and link it</h1>
+<p>```</p>
+<h2 id="additional-resources">Additional Resources</h2>
+<ul>
+<li><a href="https://cli.github.com/manual/">GitHub CLI Documentation</a></li>
+<li><a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects">GitHub Projects Documentation</a></li>
+<li><a href="https://it.ufl.edu/ai">UF AI Resources</a></li>
+<li><a href="https://guides.github.com/features/issues/">GitHub Issues Guide</a>
+```</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2026 UF Health Cancer Institute Biostatistics and Computational Biology Shared Resource
+
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
