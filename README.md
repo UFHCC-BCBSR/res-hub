@@ -1,66 +1,205 @@
+# UFHCC BCB-SR Bioinformatics Hub
 
-## UFHCC BCB-SR Bioinformatics Wiki
+A collaborative documentation site for the UF Health Cancer Institute Biostatistics and Computational Biology Shared Resource. This is where BCB-SR members document how to navigate bioinformatics — from collaborating with our unit, to using the command line, finding gold-standard tools, and troubleshooting common challenges.
 
-The UFHCC BCB-SR Bioinformatics wiki is where we BCB-SR Bioinformatics members collaboratively document how to navigate bioinformatics in the UF Health Cancer Center (and beyond) from collaborating with the BCB-SR Bioinformatics unit, using the command line, finding gold-standard tools, and trouble-shotting common challenges.
+🌐 **Live site:** [ufhcc-bcbsr.github.io/res-hub](https://ufhcc-bcbsr.github.io/res-hub/)
 
-This is the GitHub repository that stores all of the relevant code and content. The wiki is available at <https://ufhcc-bcbsr.github.io/wiki>
+---
 
-The site is built using [Wowchemy](https://wowchemy.com/), the [Wowchemy Project Documentation template](https://github.com/wowchemy/hugo-documentation-theme), and the [Hugo static site generator](https://gohugo.io/).
+## How this site works
 
-## Requesting updates to the wiki
+Every page on this site is a markdown file (`.md`) stored in the `docs/` folder of this repository. The site is built with [MkDocs](https://www.mkdocs.org) using the [Material theme](https://squidfunk.github.io/mkdocs-material/) and automatically rebuilds and deploys to GitHub Pages every time a change is pushed — including edits made directly on GitHub.com.
 
-### Create an issue
+---
 
-Go to <https://github.com/UFHCC-BCBSR/wiki/issues> and "create a new issue". Describe what information you would like documented on the wiki. You can suggest your own content if you just learned about a new tool or topic, or leave an open-ended request that we document best practices for a particular assay or analysis.
+## Which workflow is right for you?
 
-## Editing the wiki (for repo collaborators)
+<details>
+<summary>✅ <strong>No terminal needed — Edit everything on GitHub.com</strong></summary>
 
-### Editing an existing page
+This workflow requires no command line, no Git, and no local setup. All you need is a GitHub account and collaborator access to this repo.
 
-All of the wiki content is stored in markdown files in the `content/docs/` directory.
+**You can:**
+- Edit any existing page directly on GitHub.com
+- Add new pages through the GitHub interface
+- Upload images through the GitHub interface
+- See your changes live on the site within ~2 minutes of saving
 
-* To edit from the GitHub repository find the associated page click the pencil icon to edit
-* To edit from the website click the Edit this page link at the bottom of the page you want to edit and you’ll be redirected to the GitHub repository to edit
+**You cannot (without the terminal):**
+- Preview changes before they go live
+- Rename or reorganize folders
+- Add new MkDocs plugins
 
-In both cases when you are done editing add a descriptive commit message at the bottom of the page, select `Commit directly to the main branch`, and click the `Commit changes` button. If you want someone else to look at your changes before they are added to the wiki you can select `Create a new branch for this commit and start a pull request` instead and click the `Propose changes` button and someone will review the changes before merging them into the wiki.
+> If all you need to do is write and edit documentation, this workflow is all you need.
 
-### Adding a new page 
+</details>
 
-1. In the GitHub repo navigate to the appropriate folder in `content/docs/` and click `Add file` and then `Create new file`.
-2. Add the following YAML to the top of the page and edit the text of the `title` and `summary` fields to match the new page.
+<details>
+<summary>💻 <strong>Terminal workflow — Full local development</strong></summary>
+
+This workflow lets you preview the site locally before pushing and make structural changes with confidence.
+
+**You will need:**
+
+| Tool | Install |
+|------|---------|
+| Python 3 | [python.org](https://www.python.org/downloads/) |
+| Git | [git-scm.com](https://git-scm.com/) |
+| MkDocs + Material | Installed via `requirements.txt` |
+
+**Setup:**
+
+```bash
+git clone https://github.com/UFHCC-BCBSR/res-hub.git
+cd res-hub
+pip3 install -r requirements.txt
+mkdocs serve
+```
+
+Then open [http://127.0.0.1:8000](http://127.0.0.1:8000) — the site live-reloads as you edit files.
+
+</details>
+
+---
+
+## Editing an existing page
+
+Every page on the site corresponds to a `.md` file in the `docs/` folder. The folder structure mirrors the site navigation.
+
+<details>
+<summary>On GitHub.com (no terminal)</summary>
+
+1. Navigate to the file in `docs/` on GitHub.com
+2. Click the ✏️ pencil icon to edit
+3. Make your changes
+4. Add a descriptive commit message and click **Commit changes**
+
+> To have someone review your changes before they go live, select **Create a new branch for this commit and start a pull request** instead.
+
+</details>
+
+<details>
+<summary>Locally (terminal)</summary>
+
+1. Edit the file in your text editor
+2. Preview with `mkdocs serve`
+3. When happy, commit and push:
+
+```bash
+git add .
+git commit -m "Describe your change here"
+git push
+```
+
+</details>
+
+---
+
+## Adding a new page
+
+**Step 1 — Create the file**
+
+<details>
+<summary>On GitHub.com (no terminal)</summary>
+
+1. Navigate to the appropriate folder inside `docs/` on GitHub.com
+2. Click **Add file → Create new file**
+3. Name your file, e.g. `my-new-page.md`
+4. Add your content (see template below) and click **Commit changes**
+
+</details>
+
+<details>
+<summary>Locally (terminal)</summary>
+
+```bash
+touch docs/your-section/my-new-page.md
+```
+
+</details>
+
+**Step 2 — Add it to the navigation**
+
+Open `mkdocs.yml` and add your page under the appropriate section in the `nav:` block:
 
 ```yaml
----
-title: "Hi-C Data Analysis"
-summary: >
-  Best Practies for Hi-C Data Analysis
----
+nav:
+  - My Section:
+    - My New Page: your-section/my-new-page.md  # ← add this
 ```
 
-3. Add the text for the page
-4. A descriptive commit message at the bottom of the page, and select `Commit directly to the main branch` (if you don't want the changes reviewed) or `Create a new branch for this commit and start a pull request` (if you want the changes reviewed), and click the `Commit changes` or `Propose changes` button.
+**Page template**
 
-### Adding a new topic
+New pages don't require any special header — just start writing in markdown:
 
-1. In the GitHub repo navigate to the appropriate folder in `content/docs/` and click `Add file` and then `Create new file`
-2. Type the name of the directory you want to create for the topic, then `/`, and then `_index.md`
-3. Add the following text to the page and the text of the `title`, `summary`, and the paragraph description to match the new topic.
+```markdown
+# Page Title
 
-```
----
-title: "Normalization Methods in Bioinformatics"
-summary: >
-  The importance of normalization methods in bioinformatics analysis
----
+A brief description of what this page covers.
 
-Normalization is a critical step in bioinformatics analysis whether for visualization or as implemented in differential analysis testing. 
+## Section One
 
-{{< list_children >}}
+Content here.
+
+## Section Two
+
+More content here.
 ```
 
-4. Commit the changes as described above
-5. You can now add a new page to the new topic
+---
+
+## Adding a new section
+
+1. Create a new folder inside `docs/`, e.g. `docs/my-new-section/`
+2. Add at least one `.md` file to it
+3. Add the section and its pages to `mkdocs.yml`:
+
+```yaml
+nav:
+  - My New Section:
+    - First Page: my-new-section/first-page.md
+```
+
+---
+
+## Repo structure
+
+```
+res-hub/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml        # GitHub Actions — do not edit
+├── docs/
+│   ├── assets/
+│   │   ├── images/           # Store images here
+│   │   └── css/
+│   │       └── custom.css
+│   ├── index.md              # Home page
+│   ├── collaborating/
+│   ├── hipergator/
+│   ├── git-github/
+│   ├── command-line/
+│   ├── r-python/
+│   ├── workflow-managers/
+│   ├── experimental-design/
+│   ├── analysis-pipelines/
+│   ├── downstream-analysis/
+│   ├── data-sharing/
+│   ├── grant-writing/
+│   ├── publishing/
+│   └── blog/
+├── mkdocs.yml                # Site configuration and navigation
+└── requirements.txt          # Python dependencies
+```
+
+---
+
+## Requesting changes
+
+Not a repo collaborator but want to suggest a change? [Open an issue](https://github.com/UFHCC-BCBSR/res-hub/issues) and describe what you'd like documented.
+
+---
 
 ## License
 
-All content is licensed [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) and the Wowchemy infrastructure is licensed [MIT](https://mit-license.org/) by Wowchemy.
+All content is licensed [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
