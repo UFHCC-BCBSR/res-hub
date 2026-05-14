@@ -1,6 +1,6 @@
-# Welcome to the UFHCC Bioinformatics Hub
+# Welcome to the UFHCI Bioinformatics Hub
 
-Dynamic documentation for how to navigate bioinformatics with the UFHCC BCB-SR (and beyond!)
+Dynamic documentation for how to navigate bioinformatics with the UFHCI BCB-SR (and beyond!)
 
 ## Getting Started
 
