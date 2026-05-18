@@ -31,7 +31,7 @@ nav:
   - Collaborating With Us:
     - Who We Are: collaborating/who-we-are.md
     - How to Work With Us: collaborating/how-to-work-with-us.md
-- HiPerGator:
+  - HiPerGator:
     - Intro Guide: hipergator/hipergator-intro-guide.md
     - File Naming Conventions: hipergator/file-naming-conventions.md
     - HiPerGator Example: hipergator/hipergator-example.md
