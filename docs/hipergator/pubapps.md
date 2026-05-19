@@ -14,10 +14,10 @@ differences noted below.
 ## Signing In
 
 PubApps is only accessible by SSHing from HiPerGator. You cannot SSH in directly
-from your local machine.
+from your local machine. Everyone logs in as PubApps user jobrant, but access is managed through your hipergator account.
 
 ```bash
-ssh <username>@pubjobrant1
+ssh jobrant@pubjobrant1
 ```
 
 If you are prompted for a password, it is not working — access is by SSH key
@@ -47,7 +47,8 @@ The top-level structure on the VM looks like this:
 └── README.md
 ```
 
-When starting a new app, create its directories manually:
+When starting a new app, create its directories manually or via git clone (see
+[Code Development Workflow](#code-development-workflow)). :
 
 ```bash
 mkdir -p ~/bcb-sr/prod/apps/<your-app-name>
@@ -58,12 +59,14 @@ Production-ready code goes in `prod/apps/`, work-in-progress in `dev/apps/`.
 The web index pages (`web/index.html`) are where the landing pages listing
 available apps are maintained — update these when adding a new app with a live URL.
 
+(This directory schema is just for organizational purposes and does not affect the running containers or URLs; any container can bind-mount any filepath and any port can be mapped to any URL.)
+
 ---
 
 ## Code Development Workflow
 
-**Do not write or edit code directly on the PubApps VM.** The VM has no UI and
-is not set up as a development environment. The correct workflow is:
+**Avoid writing or editing code directly on the PubApps VM.** The VM has no UI and
+is not set up as a development environment. The best workflow is:
 
 1. Develop and test your app on HiPerGator and/or locally
 2. Push changes to GitHub
@@ -81,7 +84,7 @@ cd ~/bcb-sr/prod/apps/<your-app-name>
 git pull origin main
 ```
 
-The VM is a deployment target only. All development happens elsewhere.
+The VM is a deployment target only. All development should happen elsewhere.
 
 ---
 
@@ -125,8 +128,8 @@ CMD ["R", "-e", "shiny::runApp('/srv/shiny-server', host='0.0.0.0', port=3838)"]
 ```
 
 > **Best practice**: Think of the image as the *environment*, not the *app*.
-> It should contain R, system libraries, and R packages — nothing else. App
-> code is bind-mounted at runtime (see below), which means you can update the
+> It should contain R, system libraries, and R packages — nothing else. In most cases, app
+> code can just be bind-mounted at runtime (see below), which means you can update the
 > app without rebuilding the image.
 
 #### Image size and storage
