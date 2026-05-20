@@ -35,6 +35,7 @@ nav:
     - Intro Guide: hipergator/hipergator-intro-guide.md
     - File Naming Conventions: hipergator/file-naming-conventions.md
     - HiPerGator Example: hipergator/hipergator-example.md
+    - Linux Command Line Tutorial: hipergator/linux-command-line-tutorial.md
     - PubApps Deployment: hipergator/pubapps.md
   - Git & GitHub:
     - Git Collaboration: git-github/git-collaboration.md
