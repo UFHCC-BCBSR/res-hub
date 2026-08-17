@@ -1,0 +1,2852 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Resources, guides, and documentation for the UFHCC BCBSR">
+      
+      
+      
+      
+        <link rel="prev" href="../linux-command-line-tutorial/">
+      
+      
+        <link rel="next" href="../../git-github/git-collaboration/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>PubApps Deployment - UFHCC Biostatistics and Computational Biology Shared Resource</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ufrc-pubapps-deploying-shiny-apps-with-podman" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="UFHCC Biostatistics and Computational Biology Shared Resource" class="md-header__button md-logo" aria-label="UFHCC Biostatistics and Computational Biology Shared Resource" data-md-component="logo">
+      
+  <img src="../../assets/images/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UFHCC Biostatistics and Computational Biology Shared Resource
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PubApps Deployment
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="UFHCC Biostatistics and Computational Biology Shared Resource" class="md-nav__button md-logo" aria-label="UFHCC Biostatistics and Computational Biology Shared Resource" data-md-component="logo">
+      
+  <img src="../../assets/images/icon.png" alt="logo">
+
+    </a>
+    UFHCC Biostatistics and Computational Biology Shared Resource
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collaborating With Us
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Collaborating With Us
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../collaborating/who-we-are/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Who We Are
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../collaborating/how-to-work-with-us/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to Work With Us
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HiPerGator
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    HiPerGator
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hipergator-intro-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intro Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-naming-conventions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Naming Conventions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hipergator-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HiPerGator Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux-command-line-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux Command Line Tutorial
+  
+
+    
+      <br>
+      <small>A practical introduction for working on HiPerGator</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PubApps Deployment
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PubApps Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signing-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signing In
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directory Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-development-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Development Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-container-image-with-podman" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building a Container Image with Podman
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building a Container Image with Podman">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Dockerfile
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Dockerfile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#image-size-and-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Image size and storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-shiny-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-Shiny apps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-the-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building the image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inspecting-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspecting images
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running Containers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Containers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#port-assignment-prod-is-odd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Port assignment: "prod is odd"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-a-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running a container
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running a container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-replace-flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The --replace flag
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-running-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Managing Running Containers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing Running Containers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checking-storage-and-pruning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking storage and pruning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requesting-a-url-reverse-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requesting a URL (Reverse Proxy)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-port_infocsv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Updating port_info.csv
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-new-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding a New User
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git & GitHub
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Git & GitHub
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git-github/git-collaboration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git Collaboration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git-github/git-tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git Tips
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git-github/github-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub Actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git-github/github-cli-proj-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub CLI & Project Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git-github/rstudio-git-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RStudio Git Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Command Line
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Command Line
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../command-line/ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../command-line/file-compression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Compression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    R & Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    R & Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r-python/r-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    R Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r-python/lab-coding-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Coding Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r-python/lab-code-style-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Code Style Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r-python/parallelization-R/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parallelization in R
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r-python/python-package-documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python Package Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r-python/software-testing-R/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software Testing in R
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Managers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Workflow Managers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workflow-managers/workflow-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experimental Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Experimental Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experimental-design/RNA-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RNA-seq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experimental-design/ATAC-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ATAC-seq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experimental-design/scRNA-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scRNA-seq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis-pipelines/RNA-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RNA-seq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis-pipelines/ATAC-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ATAC-seq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis-pipelines/scRNA-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scRNA-seq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis-pipelines/CRISPR-Screen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRISPR Screen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis-pipelines/cut-and-run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CUT&RUN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis-pipelines/spatial-visium-v2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spatial Visium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Downstream Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Downstream Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../downstream-analysis/pathway-enrichment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pathway Enrichment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Sharing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Sharing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-sharing/globus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Globus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-sharing/rclone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rclone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grant Writing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Grant Writing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grant-writing/bioinfo-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bioinformatics Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grant-writing/DMSP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DMSP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grant-writing/key-personnel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key Personnel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grant-writing/publication-figures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publication Figures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publishing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Publishing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publishing/authorship/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authorship
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publishing/code-availability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code Availability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publishing/data-availability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Availability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publishing/publication-figures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publication Figures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/bioinfo-blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bioinformatics Blogs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/journal-club/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Journal Club
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/discussion-questions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discussion Questions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ufrc-pubapps-deploying-shiny-apps-with-podman">UFRC PubApps: Deploying Shiny Apps with Podman</h1>
+<h2 id="overview">Overview</h2>
+<p>UFRC PubApps is a virtual machine managed by UF Research Computing that allows
+us to host containerized web applications accessible via public URLs. We use
+<a href="https://podman.io/">Podman</a> (a daemonless, rootless alternative to Docker) to
+build and run containers on this VM. All of our currently deployed apps are R
+Shiny apps, though the same workflow applies to other app types with some
+differences noted below.</p>
+<hr />
+<h2 id="signing-in">Signing In</h2>
+<p>PubApps is only accessible by SSHing from HiPerGator. You cannot SSH in directly
+from your local machine. Everyone logs in as PubApps user jobrant, but access is managed through your hipergator account.</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>jobrant@pubjobrant1
+</code></pre></div>
+<p>If you are prompted for a password, it is not working — access is by SSH key
+only. If you cannot connect, you need to be added as an authorized user (see
+<a href="#adding-a-new-user">Adding a New User</a>).</p>
+<hr />
+<h2 id="directory-structure">Directory Structure</h2>
+<p>The top-level structure on the VM looks like this:</p>
+<div class="highlight"><pre><span></span><code>~/
+├── bcb-sr/
+│   ├── prod/
+│   │   ├── apps/            # Production app code (bind-mounted at runtime)
+│   │   └── web/
+│   │       └── index.html   # Production landing page
+│   ├── dev/
+│   │   ├── apps/            # Development app code (bind-mounted at runtime)
+│   │   └── web/
+│   │       └── index.html   # Dev landing page
+│   └── tests/
+├── Dockerfiles/             # Archived/misc Dockerfiles not in active deployment
+├── port_info.csv            # Record of all port assignments and URLs
+└── README.md
+</code></pre></div>
+<p>When starting a new app, create its directories manually or via git clone (see
+<a href="#code-development-workflow">Code Development Workflow</a>). :</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/bcb-sr/prod/apps/&lt;your-app-name&gt;
+mkdir<span class="w"> </span>-p<span class="w"> </span>~/bcb-sr/dev/apps/&lt;your-app-name&gt;
+</code></pre></div>
+<p>Production-ready code goes in <code>prod/apps/</code>, work-in-progress in <code>dev/apps/</code>.
+The web index pages (<code>web/index.html</code>) are where the landing pages listing
+available apps are maintained — update these when adding a new app with a live URL.</p>
+<p>(This directory schema is just for organizational purposes and does not affect the running containers or URLs; any container can bind-mount any filepath and any port can be mapped to any URL.)</p>
+<hr />
+<h2 id="code-development-workflow">Code Development Workflow</h2>
+<p><strong>Avoid writing or editing code directly on the PubApps VM.</strong> The VM has no UI and
+is not set up as a development environment. The best workflow is:</p>
+<ol>
+<li>Develop and test your app on HiPerGator and/or locally</li>
+<li>Push changes to GitHub</li>
+<li>On the VM, clone the repo once into the appropriate <code>apps/</code> directory:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/bcb-sr/prod/apps/
+git<span class="w"> </span>clone<span class="w"> </span>&lt;your-repo-url&gt;<span class="w"> </span>&lt;your-app-name&gt;
+</code></pre></div>
+<ol>
+<li>For subsequent updates, pull changes:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/bcb-sr/prod/apps/&lt;your-app-name&gt;
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+<p>The VM is a deployment target only. All development should happen elsewhere.</p>
+<hr />
+<h2 id="building-a-container-image-with-podman">Building a Container Image with Podman</h2>
+<h3 id="the-dockerfile">The Dockerfile</h3>
+<p>Each app needs a Dockerfile that defines its environment. Below is a minimal
+starting point for an R Shiny app — <strong>only include the packages your app
+actually needs.</strong> Adding unnecessary packages increases image size and build
+time, and makes the environment harder to maintain.</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Use the official Rocker Shiny base image</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">rocker/shiny:latest</span>
+
+<span class="c"># Install system dependencies</span>
+<span class="c"># These are common ones — remove any your app does not need</span>
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>libcurl4-openssl-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>libssl-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>libxml2-dev<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
+
+<span class="c"># Install only the CRAN packages your app actually uses</span>
+<span class="k">RUN</span><span class="w"> </span>install2.r<span class="w"> </span>--error<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>shiny<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;package1&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;package2&gt;
+
+<span class="c"># If your app uses Bioconductor packages, install BiocManager first,</span>
+<span class="c"># then only the packages you need</span>
+<span class="k">RUN</span><span class="w"> </span>R<span class="w"> </span>-e<span class="w"> </span><span class="s2">"install.packages('BiocManager', repos='https://cran.rstudio.com/')"</span>
+<span class="k">RUN</span><span class="w"> </span>R<span class="w"> </span>-e<span class="w"> </span><span class="s2">"BiocManager::install(c('&lt;BiocPackage1&gt;', '&lt;BiocPackage2&gt;'), update = FALSE)"</span>
+
+<span class="c"># Expose the Shiny port</span>
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">3838</span>
+
+<span class="c"># Start the Shiny app</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"R"</span><span class="p">,</span><span class="w"> </span><span class="s2">"-e"</span><span class="p">,</span><span class="w"> </span><span class="s2">"shiny::runApp('/srv/shiny-server', host='0.0.0.0', port=3838)"</span><span class="p">]</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Best practice</strong>: Think of the image as the <em>environment</em>, not the <em>app</em>.
+It should contain R, system libraries, and R packages — nothing else. In most cases, app
+code can just be bind-mounted at runtime (see below), which means you can update the
+app without rebuilding the image.</p>
+</blockquote>
+<h4 id="image-size-and-storage">Image size and storage</h4>
+<p>Image size is determined entirely at build time by what you install. A common
+source of unexpectedly large images is installing packages "just in case" rather
+than only what the app requires. Once built, the image itself does not grow.
+However, if a running container writes files to paths inside the container that
+are not bind-mounted to the host, those writes accumulate in the container's
+writable layer. Any files your app generates at runtime (e.g. user uploads,
+temporary outputs) should be written to <code>/tmp</code> inside the container, or to a
+bind-mounted directory on the host.</p>
+<h4 id="non-shiny-apps">Non-Shiny apps</h4>
+<p>The same Podman workflow applies to non-Shiny apps (e.g. Python/Flask, FastAPI,
+Streamlit). The main differences are the base image (<code>python:3.x-slim</code> or
+similar instead of <code>rocker/shiny</code>), the internal port (varies by framework),
+and the <code>CMD</code>. The port mapping and deployment steps are otherwise identical.</p>
+<h3 id="building-the-image">Building the image</h3>
+<p>Run this from the directory containing your Dockerfile:</p>
+<div class="highlight"><pre><span></span><code>podman<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>&lt;image-name&gt;:latest<span class="w"> </span>.
+</code></pre></div>
+<p>You can also specify a Dockerfile by name if it is not called <code>Dockerfile</code>:</p>
+<div class="highlight"><pre><span></span><code>podman<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>&lt;image-name&gt;:latest<span class="w"> </span>-f<span class="w"> </span>&lt;Dockerfile-name&gt;<span class="w"> </span>.
+</code></pre></div>
+<p>Use a clear, consistent image name (e.g. <code>myapp-prod</code>, <code>batchcorrector</code>).
+You will reference it by name when running containers.</p>
+<h3 id="inspecting-images">Inspecting images</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># List all local images</span>
+podman<span class="w"> </span>images
+
+<span class="c1"># Inspect a specific image</span>
+podman<span class="w"> </span>inspect<span class="w"> </span>&lt;image-name&gt;
+</code></pre></div>
+<hr />
+<h2 id="running-containers">Running Containers</h2>
+<h3 id="port-assignment-prod-is-odd">Port assignment: "prod is odd"</h3>
+<p>Each app gets two ports — one for production, one for dev. <strong>Odd ports map to
+production (<code>bcb-sr.rc.ufl.edu</code>) and even ports map to dev
+(<code>devbcb-sr.rc.ufl.edu</code>).</strong> Ports are assigned in sequence. To find the next
+available pair:</p>
+<ol>
+<li>Check <code>port_info.csv</code> for the highest assigned port</li>
+<li>Also run <code>podman ps</code> to catch any running containers not yet recorded</li>
+<li>Take the next odd number as your prod port and the following even number as dev</li>
+</ol>
+<blockquote>
+<p>Note: a container could be stopped and not appear in <code>podman ps</code> but still
+have its port recorded in <code>port_info.csv</code> — check both.</p>
+</blockquote>
+<h3 id="running-a-container">Running a container</h3>
+<div class="highlight"><pre><span></span><code>podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--name<span class="w"> </span>&lt;container-name&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span>&lt;PORT&gt;:3838<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>/pubapps/jobrant/bcb-sr/prod/apps/&lt;your-app-name&gt;:/srv/shiny-server<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>localhost/&lt;image-name&gt;:latest
+</code></pre></div>
+<p>The <code>-v</code> flag bind-mounts your app code directory into the container at the
+path Shiny expects. This means you can update the app by doing <code>git pull</code> and
+restarting the container without rebuilding the image, and the image stays lean
+and reusable across app versions.</p>
+<p><strong>Alternatively</strong>, you can bake the code into the image using a <code>COPY</code>
+instruction in the Dockerfile. This makes the image self-contained and
+portable, but means you must rebuild and redeploy the image every time the
+app code changes. For active development, the bind-mount approach is strongly
+preferred.</p>
+<h4 id="the-replace-flag">The --replace flag</h4>
+<p>If a container with that name already exists, add <code>--replace</code> to stop and
+replace it in one command:</p>
+<div class="highlight"><pre><span></span><code>podman<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--replace<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--name<span class="w"> </span>&lt;container-name&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span>&lt;PORT&gt;:3838<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>/pubapps/jobrant/bcb-sr/prod/apps/&lt;your-app-name&gt;:/srv/shiny-server<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>localhost/&lt;image-name&gt;:latest
+</code></pre></div>
+<hr />
+<h2 id="managing-running-containers">Managing Running Containers</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># List all running containers</span>
+podman<span class="w"> </span>ps
+
+<span class="c1"># List all containers including stopped ones</span>
+podman<span class="w"> </span>ps<span class="w"> </span>-a
+
+<span class="c1"># Stop a container</span>
+podman<span class="w"> </span>stop<span class="w"> </span>&lt;container-name&gt;
+
+<span class="c1"># Start a stopped container</span>
+podman<span class="w"> </span>start<span class="w"> </span>&lt;container-name&gt;
+
+<span class="c1"># Restart a container</span>
+podman<span class="w"> </span>restart<span class="w"> </span>&lt;container-name&gt;
+
+<span class="c1"># View logs (useful for debugging)</span>
+podman<span class="w"> </span>logs<span class="w"> </span>&lt;container-name&gt;
+podman<span class="w"> </span>logs<span class="w"> </span>--tail<span class="w"> </span><span class="m">50</span><span class="w"> </span>&lt;container-name&gt;
+</code></pre></div>
+<h3 id="checking-storage-and-pruning">Checking storage and pruning</h3>
+<p>Unused images and stopped containers accumulate and consume disk space. Clean
+up periodically:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check disk usage by images, containers, and volumes</span>
+podman<span class="w"> </span>system<span class="w"> </span>df
+
+<span class="c1"># Remove all stopped containers</span>
+podman<span class="w"> </span>container<span class="w"> </span>prune
+
+<span class="c1"># Remove all unused images (not referenced by any container)</span>
+podman<span class="w"> </span>image<span class="w"> </span>prune
+
+<span class="c1"># Remove everything unused at once (containers, images, volumes)</span>
+podman<span class="w"> </span>system<span class="w"> </span>prune
+</code></pre></div>
+<blockquote>
+<p><strong>Caution</strong>: <code>podman system prune</code> will remove stopped containers and unused
+images. Make sure you do not need them before running it — images take time
+to rebuild.</p>
+</blockquote>
+<hr />
+<h2 id="requesting-a-url-reverse-proxy">Requesting a URL (Reverse Proxy)</h2>
+<p>Once your containers are running, submit a ticket to UFRC to assign URLs:</p>
+<p><strong>URL</strong>: https://support.rc.ufl.edu/enter_bug.cgi</p>
+<p>Use this template:</p>
+<div class="highlight"><pre><span></span><code>Subject: URL assignment for jobrant@pubjobrant1
+
+Hello,
+
+Can you please assign the following URLs:
+
+&lt;PROD PORT&gt; -&gt; https://bcb-sr.rc.ufl.edu/&lt;your-app-name&gt;
+&lt;DEV PORT&gt;  -&gt; https://devbcb-sr.rc.ufl.edu/&lt;your-app-name&gt;
+
+Thank you!
+</code></pre></div>
+<p>You can test that the container is responding before submitting the ticket:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:&lt;PORT&gt;
+</code></pre></div>
+<hr />
+<h2 id="updating-port_infocsv">Updating port_info.csv</h2>
+<p>Every deployed container must be recorded in <code>port_info.csv</code>. Add a row for
+each container (prod and dev) with all fields populated:</p>
+<div class="highlight"><pre><span></span><code>port,container,volume,image,URL
+21123,myapp-prod,/pubapps/jobrant/bcb-sr/prod/apps/myapp:/srv/shiny-server,localhost/myapp:latest,https://bcb-sr.rc.ufl.edu/myapp/
+21124,myapp-dev,/pubapps/jobrant/bcb-sr/dev/apps/myapp:/srv/shiny-server,localhost/myapp:latest,https://devbcb-sr.rc.ufl.edu/myapp/
+</code></pre></div>
+<p>This file is the authoritative record of what is deployed and where. Keep it
+up to date — it is the first place to check when troubleshooting or adding a
+new app.</p>
+<hr />
+<h2 id="adding-a-new-user">Adding a New User</h2>
+<p>To give a HiPerGator user SSH access to the PubApps VM:</p>
+<ol>
+<li>Ask them to share their public SSH key from their <code>~/.ssh/</code> directory on HiPerGator</li>
+<li>Append that key to <code>~/.ssh/authorized_keys</code> on <code>pubjobrant1</code>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">"&lt;their public key&gt;"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.ssh/authorized_keys
+</code></pre></div>
+<p>They can then SSH in from HiPerGator. If they are prompted for a password,
+the key was not added correctly.</p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2026 UF Health Cancer Institute Biostatistics and Computational Biology Shared Resource
+
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

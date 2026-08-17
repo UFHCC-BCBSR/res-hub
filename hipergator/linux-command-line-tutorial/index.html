@@ -1,0 +1,3211 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Resources, guides, and documentation for the UFHCC BCBSR">
+      
+      
+        <meta name="author" content="Jason Orr Brant">
+      
+      
+      
+        <link rel="prev" href="../hipergator-example/">
+      
+      
+        <link rel="next" href="../pubapps/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Linux Command Line for R Users - UFHCC Biostatistics and Computational Biology Shared Resource</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="UFHCC Biostatistics and Computational Biology Shared Resource" class="md-header__button md-logo" aria-label="UFHCC Biostatistics and Computational Biology Shared Resource" data-md-component="logo">
+      
+  <img src="../../assets/images/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UFHCC Biostatistics and Computational Biology Shared Resource
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Linux Command Line for R Users
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="UFHCC Biostatistics and Computational Biology Shared Resource" class="md-nav__button md-logo" aria-label="UFHCC Biostatistics and Computational Biology Shared Resource" data-md-component="logo">
+      
+  <img src="../../assets/images/icon.png" alt="logo">
+
+    </a>
+    UFHCC Biostatistics and Computational Biology Shared Resource
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collaborating With Us
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Collaborating With Us
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../collaborating/who-we-are/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Who We Are
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../collaborating/how-to-work-with-us/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to Work With Us
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HiPerGator
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    HiPerGator
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hipergator-intro-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intro Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-naming-conventions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Naming Conventions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hipergator-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HiPerGator Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux Command Line Tutorial
+  
+
+    
+      <br>
+      <small>A practical introduction for working on HiPerGator</small>
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux Command Line Tutorial
+  
+
+    
+      <br>
+      <small>A practical introduction for working on HiPerGator</small>
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-learn-the-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Learn the Command Line?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pubapps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PubApps Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git & GitHub
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Git & GitHub
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git-github/git-collaboration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git Collaboration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git-github/git-tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git Tips
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git-github/github-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub Actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git-github/github-cli-proj-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub CLI & Project Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git-github/rstudio-git-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RStudio Git Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Command Line
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Command Line
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../command-line/ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../command-line/file-compression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Compression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    R & Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    R & Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r-python/r-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    R Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r-python/lab-coding-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Coding Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r-python/lab-code-style-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Code Style Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r-python/parallelization-R/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parallelization in R
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r-python/python-package-documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python Package Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../r-python/software-testing-R/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software Testing in R
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Managers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Workflow Managers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workflow-managers/workflow-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experimental Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Experimental Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experimental-design/RNA-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RNA-seq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experimental-design/ATAC-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ATAC-seq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../experimental-design/scRNA-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scRNA-seq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis-pipelines/RNA-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RNA-seq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis-pipelines/ATAC-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ATAC-seq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis-pipelines/scRNA-seq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    scRNA-seq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis-pipelines/CRISPR-Screen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRISPR Screen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis-pipelines/cut-and-run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CUT&RUN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis-pipelines/spatial-visium-v2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spatial Visium
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Downstream Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Downstream Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../downstream-analysis/pathway-enrichment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pathway Enrichment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Sharing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data Sharing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-sharing/globus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Globus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-sharing/rclone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rclone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grant Writing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Grant Writing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grant-writing/bioinfo-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bioinformatics Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grant-writing/DMSP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DMSP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grant-writing/key-personnel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key Personnel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../grant-writing/publication-figures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publication Figures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publishing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Publishing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publishing/authorship/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authorship
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publishing/code-availability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code Availability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publishing/data-availability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Availability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../publishing/publication-figures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publication Figures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blog
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/bioinfo-blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bioinformatics Blogs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/journal-club/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Journal Club
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/discussion-questions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discussion Questions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="introduction">Introduction</h1>
+<p>Welcome to the Linux command line! If you're used to working in RStudio, think of the <strong>bash shell</strong> (the most common Linux command-line interpreter) as a text-based interface to your computer—very much like RStudio's console, but for your operating system rather than just R. Instead of clicking through menus and folder windows, you type commands to navigate, manage files, and run programs.</p>
+<p>This tutorial is designed for R users who are new to Linux and HPC (high-performance computing) environments. By the end, you'll be comfortable enough to navigate the filesystem, manage files, run jobs, and launch a full RStudio session directly in your browser on UF's <strong>HiPerGator</strong> cluster.</p>
+<blockquote>
+<p><strong>💡 R Analogies Throughout</strong>
+Because you already think in R, we'll use <strong>R analogies</strong> throughout this tutorial to connect new concepts to things you already know.</p>
+</blockquote>
+<h2 id="why-learn-the-command-line">Why Learn the Command Line?</h2>
+<ul>
+<li><strong>HPC access is terminal-based.</strong> HiPerGator doesn't have a graphical desktop — you connect via SSH and type commands.</li>
+<li><strong>Automation.</strong> Shell scripts automate repetitive tasks the same way R scripts automate analyses.</li>
+<li><strong>Bioinformatics tools.</strong> Nearly all genomics and bioinformatics software is designed to run from the command line.</li>
+<li><strong>Speed and power.</strong> Many file operations (moving, searching, compressing thousands of files) are far faster on the command line than through a GUI.</li>
+</ul>
+<hr />
+<h1 id="getting-started">Getting Started</h1>
+<h2 id="opening-a-terminal">Opening a Terminal</h2>
+<ul>
+<li><strong>On a Mac</strong>: Open <strong>Terminal</strong> (Applications → Utilities → Terminal) or use <a href="https://iterm2.com/">iTerm2</a>.</li>
+<li><strong>On Windows</strong>: Use <strong>Windows Terminal</strong> with WSL (Windows Subsystem for Linux), or install <a href="https://mobaxterm.mobatek.net/">MobaXterm</a> for HPC work.</li>
+<li><strong>On Linux</strong>: Open your desktop's built-in terminal application.</li>
+<li><strong>On HiPerGator</strong>: After logging in via SSH, you're already at a terminal.</li>
+</ul>
+<h2 id="the-command-prompt">The Command Prompt</h2>
+<p>When you open a terminal, you'll see something like:</p>
+<div class="highlight"><pre><span></span><code>username@hostname:~$
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>username</code></td>
+<td>Your login name</td>
+</tr>
+<tr>
+<td><code>hostname</code></td>
+<td>The name of the machine you're on</td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>Your current location (the <code>~</code> is shorthand for your home directory)</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>Indicates you are a regular (non-root) user</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>📝 R Analogy</strong>
+The prompt is like the <code>&gt;</code> you see in R's console — it means the shell is ready for your next command.</p>
+</blockquote>
+<h2 id="key-terminology">Key Terminology</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Linux</th>
+<th>R / RStudio Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Directory</strong></td>
+<td>A folder in the filesystem</td>
+<td>A folder in the Files pane</td>
+</tr>
+<tr>
+<td><strong>File</strong></td>
+<td>Any stored object (script, data, log)</td>
+<td>An <code>.R</code>, <code>.csv</code>, <code>.rds</code> file</td>
+</tr>
+<tr>
+<td><strong>Command</strong></td>
+<td>An instruction you type and run</td>
+<td>A function call</td>
+</tr>
+<tr>
+<td><strong>Shell</strong></td>
+<td>The program (bash) that runs your commands</td>
+<td>R's interpreter</td>
+</tr>
+<tr>
+<td><strong>Working directory</strong></td>
+<td>Where you currently "are" in the filesystem</td>
+<td><code>getwd()</code> result</td>
+</tr>
+<tr>
+<td><strong>Path</strong></td>
+<td>The address of a file or directory</td>
+<td>A file path in <code>read.csv("path/to/file.csv")</code></td>
+</tr>
+<tr>
+<td><strong>Argument / Flag</strong></td>
+<td>An option that modifies a command's behavior</td>
+<td>A function argument</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="navigating-the-filesystem">Navigating the Filesystem</h1>
+<h2 id="pwd-where-am-i"><code>pwd</code> — Where Am I?</h2>
+<p><code>pwd</code> (<strong>p</strong>rint <strong>w</strong>orking <strong>d</strong>irectory) shows your current location.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">pwd</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>/home/username
+</code></pre></div>
+<blockquote>
+<p><strong>📝 R Analogy: <code>getwd()</code></strong>
+<code>pwd</code> is the shell equivalent of <code>getwd()</code> in R.</p>
+</blockquote>
+<h2 id="ls-whats-here"><code>ls</code> — What's Here?</h2>
+<p><code>ls</code> (<strong>l</strong>i<strong>s</strong>t) shows the contents of your current directory.</p>
+<div class="highlight"><pre><span></span><code>ls
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>data  results.csv  scripts
+</code></pre></div>
+<h3 id="useful-ls-options">Useful <code>ls</code> Options</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ls -l</code></td>
+<td>Long format — shows permissions, owner, size, and date</td>
+</tr>
+<tr>
+<td><code>ls -a</code></td>
+<td>Show <strong>all</strong> files, including hidden ones (starting with <code>.</code>)</td>
+</tr>
+<tr>
+<td><code>ls -lh</code></td>
+<td>Long format with <strong>human-readable</strong> file sizes (KB, MB, GB)</td>
+</tr>
+<tr>
+<td><code>ls -lt</code></td>
+<td>Long format sorted by <strong>modification time</strong>, newest first</td>
+</tr>
+<tr>
+<td><code>ls -lhS</code></td>
+<td>Sort by <strong>file size</strong>, largest first</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-lh
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>total 24K
+drwxr-xr-x 2 username group 4.0K Jun 13 09:00 data
+-rw-r--r-- 1 username group  12K Jun 13 08:55 results.csv
+drwxr-xr-x 2 username group 4.0K Jun 13 09:01 scripts
+</code></pre></div>
+<blockquote>
+<p><strong>📝 R Analogy: Files Pane</strong>
+<code>ls</code> is like looking at RStudio's Files pane, and <code>ls -lh</code> is like switching to "Details" view.</p>
+</blockquote>
+<h2 id="cd-move-around"><code>cd</code> — Move Around</h2>
+<p><code>cd</code> (<strong>c</strong>hange <strong>d</strong>irectory) navigates between directories.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>data
+<span class="nb">pwd</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>/home/username/data
+</code></pre></div>
+<h3 id="essential-cd-shortcuts">Essential <code>cd</code> shortcuts</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cd ..</code></td>
+<td>Go up one level (parent directory)</td>
+</tr>
+<tr>
+<td><code>cd ~</code> or just <code>cd</code></td>
+<td>Go to your home directory</td>
+</tr>
+<tr>
+<td><code>cd /</code></td>
+<td>Go to the root of the entire filesystem</td>
+</tr>
+<tr>
+<td><code>cd -</code></td>
+<td>Go back to your previous directory</td>
+</tr>
+<tr>
+<td><code>cd /blue/cancercenter/username</code></td>
+<td>Use an <strong>absolute path</strong> to go anywhere directly</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>💡 Absolute vs. Relative Paths</strong></p>
+<ul>
+<li>An <strong>absolute path</strong> starts from root (<code>/</code>) and always works regardless of where you are: <code>/home/username/data</code></li>
+<li>A <strong>relative path</strong> is relative to your current location: <code>data</code> or <code>../scripts</code></li>
+</ul>
+<p>This is exactly the same distinction as in R: <code>"/home/username/data/file.csv"</code> vs <code>"data/file.csv"</code>.</p>
+</blockquote>
+<h2 id="tab-completion">Tab Completion</h2>
+<p>This is one of the most important habits to build. Press <strong>Tab</strong> after partially typing a file or directory name and bash will complete it for you. Press <strong>Tab twice</strong> to see all possible completions if there are multiple matches.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>dat&lt;TAB&gt;<span class="w">   </span><span class="c1"># completes to: cd data</span>
+</code></pre></div>
+<p>This prevents typos and saves significant time.</p>
+<hr />
+<h1 id="managing-files-and-directories">Managing Files and Directories</h1>
+<h2 id="mkdir-create-directories"><code>mkdir</code> — Create Directories</h2>
+<p><code>mkdir</code> (<strong>m</strong>a<strong>k</strong>e <strong>dir</strong>ectory) creates a new folder.</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>analysis
+ls
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>analysis  data  results.csv  scripts
+</code></pre></div>
+<p>Use <code>-p</code> to create nested directories all at once:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>project/data/raw
+</code></pre></div>
+<p>This creates <code>project/</code>, <code>project/data/</code>, and <code>project/data/raw/</code> in one step — very useful for setting up project structures.</p>
+<h2 id="touch-create-an-empty-file"><code>touch</code> — Create an Empty File</h2>
+<p><code>touch</code> creates an empty file (or updates the timestamp of an existing one).</p>
+<div class="highlight"><pre><span></span><code>touch<span class="w"> </span>scripts/analysis.R
+</code></pre></div>
+<h2 id="cp-copy-files-and-directories"><code>cp</code> — Copy Files and Directories</h2>
+<p><code>cp</code> (<strong>c</strong>o<strong>p</strong>y) duplicates files or folders.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Copy a file</span>
+cp<span class="w"> </span>results.csv<span class="w"> </span>results_backup.csv
+<span class="c1"># Copy into a directory</span>
+cp<span class="w"> </span>results.csv<span class="w"> </span>data/
+<span class="c1"># Copy a directory and all its contents (requires -r for recursive)</span>
+cp<span class="w"> </span>-r<span class="w"> </span>data<span class="w"> </span>data_backup
+</code></pre></div>
+<h2 id="mv-move-or-rename"><code>mv</code> — Move or Rename</h2>
+<p><code>mv</code> (<strong>m</strong>o<strong>v</strong>e) moves files/directories or renames them. Unlike <code>cp</code>, the original is removed.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Rename a file</span>
+mv<span class="w"> </span>analysis.R<span class="w"> </span>analysis_v1.R
+<span class="c1"># Move a file into a directory</span>
+mv<span class="w"> </span>analysis_v1.R<span class="w"> </span>scripts/
+<span class="c1"># Move and rename in one step</span>
+mv<span class="w"> </span>scripts/analysis_v1.R<span class="w"> </span>archive/analysis_final.R
+</code></pre></div>
+<h2 id="rm-delete-files-and-directories"><code>rm</code> — Delete Files and Directories</h2>
+<blockquote>
+<p><strong>⚠️ No Recycle Bin on Linux</strong>
+<code>rm</code> permanently deletes files. There is no Trash or Undo. On HiPerGator especially, double-check before running <code>rm</code>.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># Delete a file</span>
+rm<span class="w"> </span>results_backup.csv
+<span class="c1"># Delete a directory and everything inside it</span>
+rm<span class="w"> </span>-r<span class="w"> </span>data_backup
+<span class="c1"># Interactive mode — asks for confirmation before each deletion (recommended)</span>
+rm<span class="w"> </span>-i<span class="w"> </span>important_file.csv
+</code></pre></div>
+<h2 id="ln-create-symbolic-links"><code>ln</code> — Create Symbolic Links</h2>
+<p>Symbolic links (symlinks) are like shortcuts or aliases — they point to a file or directory without duplicating it. This is very useful on HiPerGator for organizing data across filesystems without copying large files.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a symlink called "raw_data" pointing to the actual data location</span>
+ln<span class="w"> </span>-s<span class="w"> </span>/blue/cancercenter/shared/project_data<span class="w"> </span>raw_data
+ls<span class="w"> </span>-la
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>lrwxrwxrwx 1 username group   38 Jun 13 09:10 raw_data -&gt; /blue/cancercenter/shared/project_data
+</code></pre></div>
+<hr />
+<h1 id="viewing-and-working-with-files">Viewing and Working with Files</h1>
+<h2 id="cat-print-file-contents"><code>cat</code> — Print File Contents</h2>
+<p><code>cat</code> prints the entire contents of a file to the terminal. Best for small files.</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>scripts/analysis.R
+</code></pre></div>
+<h2 id="less-scroll-through-files"><code>less</code> — Scroll Through Files</h2>
+<p><code>less</code> is for viewing large files interactively — it doesn't load everything at once.</p>
+<div class="highlight"><pre><span></span><code>less<span class="w"> </span>results.csv
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action in <code>less</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Space</code> or <code>f</code></td>
+<td>Page down</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>Page back</td>
+</tr>
+<tr>
+<td><code>g</code></td>
+<td>Go to beginning</td>
+</tr>
+<tr>
+<td><code>G</code></td>
+<td>Go to end</td>
+</tr>
+<tr>
+<td><code>/&lt;term&gt;</code></td>
+<td>Search forward for <code>&lt;term&gt;</code></td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>Quit</td>
+</tr>
+</tbody>
+</table>
+<h2 id="head-and-tail-view-file-beginningsends"><code>head</code> and <code>tail</code> — View File Beginnings/Ends</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># First 10 lines (default)</span>
+head<span class="w"> </span>results.csv
+<span class="c1"># First 20 lines</span>
+head<span class="w"> </span>-n<span class="w"> </span><span class="m">20</span><span class="w"> </span>results.csv
+<span class="c1"># Last 10 lines</span>
+tail<span class="w"> </span>results.csv
+<span class="c1"># Watch a file update in real time (great for monitoring log files)</span>
+tail<span class="w"> </span>-f<span class="w"> </span>rserver_12345.log
+</code></pre></div>
+<blockquote>
+<p><strong>📝 R Analogy: <code>head()</code> and <code>tail()</code></strong>
+These work exactly like <code>head()</code> and <code>tail()</code> in R, and are especially useful for peeking at large data files without loading them.</p>
+</blockquote>
+<h2 id="wc-count-lines-words-characters"><code>wc</code> — Count Lines, Words, Characters</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Count lines in a file (-l for lines only)</span>
+wc<span class="w"> </span>-l<span class="w"> </span>results.csv
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>1001 results.csv
+</code></pre></div>
+<p>This tells you <code>results.csv</code> has 1001 lines — useful for quickly checking if a file has the expected number of rows.</p>
+<h2 id="grep-search-inside-files"><code>grep</code> — Search Inside Files</h2>
+<p><code>grep</code> searches for patterns (like <code>grep</code> or <code>stringr::str_detect()</code> in R).</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Find all lines containing "BRCA1"</span>
+grep<span class="w"> </span><span class="s2">"BRCA1"</span><span class="w"> </span>gene_list.txt
+<span class="c1"># Case-insensitive search</span>
+grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">"brca1"</span><span class="w"> </span>gene_list.txt
+<span class="c1"># Show line numbers</span>
+grep<span class="w"> </span>-n<span class="w"> </span><span class="s2">"BRCA1"</span><span class="w"> </span>gene_list.txt
+<span class="c1"># Count matching lines</span>
+grep<span class="w"> </span>-c<span class="w"> </span><span class="s2">"BRCA1"</span><span class="w"> </span>gene_list.txt
+<span class="c1"># Search recursively in all files under a directory</span>
+grep<span class="w"> </span>-r<span class="w"> </span><span class="s2">"BRCA1"</span><span class="w"> </span>scripts/
+</code></pre></div>
+<hr />
+<h1 id="pipes-redirection-and-combining-commands">Pipes, Redirection, and Combining Commands</h1>
+<p>One of the most powerful aspects of the Linux command line is combining simple commands to accomplish complex tasks.</p>
+<h2 id="pipes">Pipes: <code>|</code></h2>
+<p>The pipe <code>|</code> sends the output of one command as the input to the next — exactly like R's <code>%&gt;%</code> (magrittr) or <code>|&gt;</code> (native pipe).</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Count how many files are in the current directory</span>
+ls<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+<span class="c1"># Find lines containing "error" in a log, then show only the first 20</span>
+grep<span class="w"> </span><span class="s2">"error"</span><span class="w"> </span>pipeline.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-20
+<span class="c1"># List unique sample IDs from column 1 of a file, sorted alphabetically</span>
+cut<span class="w"> </span>-f1<span class="w"> </span>samples.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq
+</code></pre></div>
+<blockquote>
+<p><strong>📝 R Analogy: <code>|&gt;</code> or <code>%&gt;%</code></strong>
+<code>ls -l | wc -l</code> is like <code>list.files() |&gt; length()</code> in R.</p>
+</blockquote>
+<h2 id="redirection-and">Redirection: <code>&gt;</code> and <code>&gt;&gt;</code></h2>
+<p>Redirect output to a file instead of the terminal.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Write output to a file (overwrites existing content)</span>
+ls<span class="w"> </span>-lh<span class="w"> </span>&gt;<span class="w"> </span>file_list.txt
+<span class="c1"># Append output to a file (adds to the end)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Analysis complete"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>run_notes.txt
+</code></pre></div>
+<blockquote>
+<p><strong>⚠️ Warning</strong>
+Using <code>&gt;</code> will silently overwrite an existing file. Use <code>&gt;&gt;</code> when you want to add to an existing file.</p>
+</blockquote>
+<h2 id="echo-print-text"><code>echo</code> — Print Text</h2>
+<p><code>echo</code> prints text to the terminal or into a file.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">"Hello, HiPerGator"</span>
+<span class="c1"># Write a simple header into a new file</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"sample_id,condition,batch"</span><span class="w"> </span>&gt;<span class="w"> </span>metadata.csv
+</code></pre></div>
+<hr />
+<h1 id="getting-help">Getting Help</h1>
+<h2 id="man-manual-pages"><code>man</code> — Manual Pages</h2>
+<div class="highlight"><pre><span></span><code>man<span class="w"> </span>ls
+</code></pre></div>
+<p><code>man</code> opens the full manual for a command. Navigate with the same keys as <code>less</code>, and press <code>q</code> to quit.</p>
+<h2 id="-help"><code>--help</code></h2>
+<p>Most commands also accept a <code>--help</code> flag for a shorter summary:</p>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>--help
+cp<span class="w"> </span>--help
+</code></pre></div>
+<blockquote>
+<p><strong>📝 R Analogy: <code>?</code></strong>
+<code>man ls</code> is the shell equivalent of <code>?ls</code> in R — it's the built-in help system.</p>
+</blockquote>
+<h2 id="which-find-where-a-command-lives"><code>which</code> — Find Where a Command Lives</h2>
+<div class="highlight"><pre><span></span><code>which<span class="w"> </span>R
+which<span class="w"> </span>python
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>/apps/compilers/gcc/12.2.0/R/4.4.1/bin/R
+</code></pre></div>
+<p>This tells you which version of a program is currently active — very useful on HPC systems where multiple versions may be installed.</p>
+<hr />
+<h1 id="working-on-hipergator">Working on HiPerGator</h1>
+<p>HiPerGator uses the <strong>SLURM</strong> workload manager to schedule and run computational jobs. Rather than running analyses directly (which would use shared login-node resources), you submit jobs to a queue, and SLURM allocates compute nodes for you.</p>
+<h2 id="connecting-via-ssh">Connecting via SSH</h2>
+<p>From your local terminal:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>username@hpg.rc.ufl.edu
+</code></pre></div>
+<p>You'll be prompted for your password and Duo two-factor authentication.</p>
+<h2 id="the-module-system">The Module System</h2>
+<p>HiPerGator uses <strong>Lmod</strong> (Environment Modules) to manage software. Rather than having all software installed globally, you load only what you need.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># See what modules are currently loaded</span>
+module<span class="w"> </span>list
+<span class="c1"># Search for available versions of a package</span>
+module<span class="w"> </span>spider<span class="w"> </span>R
+<span class="c1"># Load a specific module</span>
+module<span class="w"> </span>load<span class="w"> </span>R
+<span class="c1"># Unload a module</span>
+module<span class="w"> </span>unload<span class="w"> </span>R
+<span class="c1"># Remove all loaded modules (start fresh)</span>
+module<span class="w"> </span>purge
+</code></pre></div>
+<h2 id="filesystems-on-hipergator">Filesystems on HiPerGator</h2>
+<table>
+<thead>
+<tr>
+<th>Filesystem</th>
+<th>Location</th>
+<th>Best For</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Home</strong></td>
+<td><code>/home/username</code></td>
+<td>Scripts, config files</td>
+<td>Small quota (~40 GB), backed up</td>
+</tr>
+<tr>
+<td><strong>Blue</strong></td>
+<td><code>/blue/cancercenter/username</code></td>
+<td>Primary project data and results</td>
+<td>Large quota, not backed up</td>
+</tr>
+<tr>
+<td><strong>Orange</strong></td>
+<td><code>/orange/cancercenter/username</code></td>
+<td>Long-term storage, archiving</td>
+<td>Slower I/O than blue</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>💡 Tip</strong>
+Run large pipelines (like <code>nf-core/methylseq</code>) with data on <code>/blue</code>. Use <code>/orange</code> for archiving completed projects.</p>
+</blockquote>
+<h2 id="slurm-submitting-jobs">SLURM: Submitting Jobs</h2>
+<h3 id="key-slurm-commands">Key SLURM Commands</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sbatch script.sh</code></td>
+<td>Submit a job script to the queue</td>
+</tr>
+<tr>
+<td><code>squeue -u $USER</code></td>
+<td>Check the status of your jobs</td>
+</tr>
+<tr>
+<td><code>scancel &lt;jobid&gt;</code></td>
+<td>Cancel a running or pending job</td>
+</tr>
+<tr>
+<td><code>sinfo</code></td>
+<td>View available partitions and node status</td>
+</tr>
+</tbody>
+</table>
+<h3 id="anatomy-of-a-slurm-script">Anatomy of a SLURM Script</h3>
+<p>A SLURM batch script is a bash script with special <code>#SBATCH</code> header lines that tell the scheduler what resources you need.</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=my_analysis       # Name shown in the queue</span>
+<span class="c1">#SBATCH --nodes=1                    # Number of nodes (usually 1)</span>
+<span class="c1">#SBATCH --ntasks=1                   # Number of parallel tasks</span>
+<span class="c1">#SBATCH --cpus-per-task=4            # CPU cores per task</span>
+<span class="c1">#SBATCH --mem=32gb                   # Memory to reserve</span>
+<span class="c1">#SBATCH --time=04:00:00              # Max wall time (HH:MM:SS)</span>
+<span class="c1">#SBATCH --output=%x_%j.log          # Log file (%x=jobname, %j=jobid)</span>
+<span class="c1">#SBATCH --account=cancercenter-dept  # Billing account</span>
+<span class="c1">#SBATCH --qos=cancercenter-dept      # Quality of service</span>
+<span class="c1">#SBATCH --mail-type=END,FAIL         # Email on job end or failure</span>
+<span class="c1">#SBATCH --mail-user=$USER@ufl.edu    # Your email</span>
+
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>R/4.4.1
+
+Rscript<span class="w"> </span>scripts/analysis.R
+</code></pre></div>
+<hr />
+<h1 id="running-rstudio-on-hipergator">Running RStudio on HiPerGator</h1>
+<p>Rather than working in a plain terminal, you can run a full <strong>RStudio</strong> session on a HiPerGator compute node and access it through your web browser — giving you a familiar environment while using the cluster's compute resources.</p>
+<h2 id="overview">Overview</h2>
+<p>The process works in three steps:</p>
+<ol>
+<li>Submit a SLURM job that starts an RStudio Server (<code>rserver</code>) on a compute node</li>
+<li>Set up an SSH tunnel from your laptop to that compute node</li>
+<li>Open your browser to <code>http://localhost:8080</code></li>
+</ol>
+<h2 id="step-1-create-the-slurm-script">Step 1: Create the SLURM Script</h2>
+<p>Create a file called <code>rserver.sbatch</code> in your home directory with the following content:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=rserver</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --cpus-per-task=1</span>
+<span class="c1">#SBATCH --mem=8gb</span>
+<span class="c1">#SBATCH --time=02:00:00</span>
+<span class="c1">#SBATCH --output=rserver_%j.log</span>
+<span class="c1">#SBATCH --account=cancercenter-dept</span>
+<span class="c1">#SBATCH --qos=cancercenter-dept</span>
+<span class="c1">#SBATCH --mail-type=END,FAIL</span>
+<span class="c1">#SBATCH --mail-user=$USER@ufl.edu</span>
+
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>R
+
+rserver
+</code></pre></div>
+<blockquote>
+<p><strong>💡 Tip</strong>
+You can adjust <code>--mem</code> and <code>--time</code> based on your session needs. For interactive data exploration, 8–16 GB and 2–4 hours is usually sufficient. For memory-intensive work, you can go up to <code>--mem=64gb</code>.</p>
+</blockquote>
+<p>You can create this file directly from the terminal:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Open nano text editor to create the file</span>
+nano<span class="w"> </span>rserver.sbatch
+</code></pre></div>
+<p>Paste the content above, then press <code>Ctrl+O</code> to save and <code>Ctrl+X</code> to exit.</p>
+<h2 id="step-2-submit-the-job">Step 2: Submit the Job</h2>
+<div class="highlight"><pre><span></span><code>sbatch<span class="w"> </span>rserver.sbatch
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Submitted batch job 12345678
+</code></pre></div>
+<p>SLURM will print a <strong>job ID</strong> (e.g., <code>12345678</code>). The job may take a moment to start depending on queue wait times. Check its status with:</p>
+<div class="highlight"><pre><span></span><code>squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>JOBID     PARTITION  NAME     USER    ST  TIME  NODES  NODELIST
+12345678  hpg2-comp  rserver  jbrant  R   0:23  1      c12345a-s42
+</code></pre></div>
+<p>Once <code>ST</code> shows <code>R</code> (Running), move on.</p>
+<h2 id="step-3-read-the-log-file">Step 3: Read the Log File</h2>
+<p>Once the job is running, read its log file to get the SSH tunnel command:</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>rserver_12345678.log
+</code></pre></div>
+<p>The log will contain a line like:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="m">8080</span>:c12345a-s42.ufhpc:37546<span class="w"> </span>username@hpg.rc.ufl.edu
+</code></pre></div>
+<p>Copy this entire line — you'll run it on your <strong>local machine</strong> (not on HiPerGator).</p>
+<h2 id="step-4-open-the-ssh-tunnel">Step 4: Open the SSH Tunnel</h2>
+<p>Open a <strong>new terminal window on your local computer</strong> (don't close the HiPerGator session). Paste and run the <code>ssh</code> command from the log:</p>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="m">8080</span>:c12345a-s42.ufhpc:37546<span class="w"> </span>username@hpg.rc.ufl.edu
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-N</code></td>
+<td>Don't execute a remote command — just forward the port</td>
+</tr>
+<tr>
+<td><code>-L 8080:...</code></td>
+<td>Forward your local port 8080 to the compute node</td>
+</tr>
+<tr>
+<td><code>username@hpg.rc.ufl.edu</code></td>
+<td>Your HiPerGator login</td>
+</tr>
+</tbody>
+</table>
+<p>Enter your password and complete Duo authentication. <strong>The terminal will appear to hang — this is normal.</strong> The tunnel is active as long as this window is open. Do not close it.</p>
+<h2 id="step-5-open-rstudio-in-your-browser">Step 5: Open RStudio in Your Browser</h2>
+<p>Open any web browser on your local computer and navigate to:</p>
+<div class="highlight"><pre><span></span><code>http://localhost:8080
+</code></pre></div>
+<p>You should see an RStudio login page. Log in with your HiPerGator credentials.</p>
+<blockquote>
+<p><strong>💡 Your RStudio Session Is Running on the Cluster</strong>
+Everything you do in this RStudio session — loading data, running models, installing packages — is executing on the HiPerGator compute node, not your laptop. You can load files from <code>/blue/cancercenter/username/</code> just as you would from a local path.</p>
+</blockquote>
+<h2 id="ending-your-session">Ending Your Session</h2>
+<p>When you're finished:</p>
+<ol>
+<li>Save your work and close RStudio in the browser</li>
+<li>In the tunnel terminal on your laptop, press <code>Ctrl+C</code> to close the SSH tunnel</li>
+<li>Cancel the SLURM job if time remains:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>scancel<span class="w"> </span><span class="m">12345678</span>
+</code></pre></div>
+<blockquote>
+<p><strong>⚠️ Warning</strong>
+If you simply close the tunnel window without canceling the job, the RStudio server continues running on the cluster (consuming your allocation) until the <code>--time</code> limit is reached.</p>
+</blockquote>
+<hr />
+<h1 id="putting-it-all-together-a-typical-workflow">Putting It All Together: A Typical Workflow</h1>
+<p>Here's what a typical session on HiPerGator might look like for a biostatistician starting a new project:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Log in to HiPerGator</span>
+ssh<span class="w"> </span>username@hpg.rc.ufl.edu
+
+<span class="c1"># 2. Navigate to your project space on /blue</span>
+<span class="nb">cd</span><span class="w"> </span>/blue/cancercenter/username
+
+<span class="c1"># 3. Create a structured project directory</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>my_project/<span class="o">{</span>data/raw,data/processed,scripts,results,logs<span class="o">}</span>
+
+<span class="c1"># 4. Check what you've created</span>
+ls<span class="w"> </span>-R<span class="w"> </span>my_project
+
+<span class="c1"># 5. Copy or link to shared data</span>
+ln<span class="w"> </span>-s<span class="w"> </span>/blue/cancercenter/shared/cohort_data<span class="w"> </span>my_project/data/raw/cohort_data
+
+<span class="c1"># 6. Transfer a local script (done from your local machine)</span>
+<span class="c1">#    scp local_analysis.R username@hpg.rc.ufl.edu:/blue/cancercenter/username/my_project/scripts/</span>
+
+<span class="c1"># 7. Submit an RStudio session to work interactively</span>
+sbatch<span class="w"> </span>rserver.sbatch
+
+<span class="c1"># 8. Check the log once it starts</span>
+tail<span class="w"> </span>-f<span class="w"> </span>rserver_*.log
+
+<span class="c1"># 9. Copy the SSH tunnel line, open it on your laptop, and go to http://localhost:8080</span>
+</code></pre></div>
+<hr />
+<h1 id="tips-and-best-practices">Tips and Best Practices</h1>
+<ul>
+<li><strong>Tab complete everything.</strong> It prevents typos in file paths and saves time.</li>
+<li><strong>Use the up arrow</strong> to scroll through command history — you rarely need to retype a long command.</li>
+<li><strong><code>history</code></strong> prints your recent command history; <code>history | grep sbatch</code> finds all sbatch commands you've run.</li>
+<li><strong><code>Ctrl+C</code></strong> cancels a running command if something goes wrong or hangs.</li>
+<li><strong><code>Ctrl+L</code></strong> or <code>clear</code> clears the terminal screen.</li>
+<li><strong>Never run jobs on the login node.</strong> Use <code>sbatch</code> for anything computationally intensive.</li>
+<li><strong>Be careful with <code>rm -r</code>.</strong> On a shared filesystem, deleted files are gone forever. When in doubt, move things to an <code>archive/</code> folder first.</li>
+<li><strong>Check your quota</strong> periodically with the <code>squota</code> utility available in our group's shared tools.</li>
+</ul>
+<hr />
+<h1 id="quick-reference">Quick Reference</h1>
+<h2 id="filesystem-navigation">Filesystem Navigation</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pwd</code></td>
+<td>Print current directory</td>
+</tr>
+<tr>
+<td><code>ls -lh</code></td>
+<td>List directory contents with sizes</td>
+</tr>
+<tr>
+<td><code>cd &lt;dir&gt;</code></td>
+<td>Change directory</td>
+</tr>
+<tr>
+<td><code>cd ..</code></td>
+<td>Go up one level</td>
+</tr>
+<tr>
+<td><code>cd ~</code></td>
+<td>Go to home directory</td>
+</tr>
+</tbody>
+</table>
+<h2 id="file-management">File Management</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdir -p &lt;dir&gt;</code></td>
+<td>Create directory (and parents)</td>
+</tr>
+<tr>
+<td><code>cp &lt;src&gt; &lt;dst&gt;</code></td>
+<td>Copy file</td>
+</tr>
+<tr>
+<td><code>cp -r &lt;src&gt; &lt;dst&gt;</code></td>
+<td>Copy directory recursively</td>
+</tr>
+<tr>
+<td><code>mv &lt;src&gt; &lt;dst&gt;</code></td>
+<td>Move or rename</td>
+</tr>
+<tr>
+<td><code>rm &lt;file&gt;</code></td>
+<td>Delete file (no undo!)</td>
+</tr>
+<tr>
+<td><code>rm -r &lt;dir&gt;</code></td>
+<td>Delete directory recursively</td>
+</tr>
+<tr>
+<td><code>ln -s &lt;target&gt; &lt;link&gt;</code></td>
+<td>Create symbolic link</td>
+</tr>
+</tbody>
+</table>
+<h2 id="viewing-files">Viewing Files</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cat &lt;file&gt;</code></td>
+<td>Print file contents</td>
+</tr>
+<tr>
+<td><code>less &lt;file&gt;</code></td>
+<td>Scroll through a file</td>
+</tr>
+<tr>
+<td><code>head -n 20 &lt;file&gt;</code></td>
+<td>First 20 lines</td>
+</tr>
+<tr>
+<td><code>tail -f &lt;file&gt;</code></td>
+<td>Watch file update in real time</td>
+</tr>
+<tr>
+<td><code>wc -l &lt;file&gt;</code></td>
+<td>Count lines</td>
+</tr>
+<tr>
+<td><code>grep "pattern" &lt;file&gt;</code></td>
+<td>Search inside a file</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slurm">SLURM</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sbatch script.sbatch</code></td>
+<td>Submit a job</td>
+</tr>
+<tr>
+<td><code>squeue -u $USER</code></td>
+<td>Check your job status</td>
+</tr>
+<tr>
+<td><code>scancel &lt;jobid&gt;</code></td>
+<td>Cancel a job</td>
+</tr>
+<tr>
+<td><code>sacct -j &lt;jobid&gt;</code></td>
+<td>View completed job accounting info</td>
+</tr>
+</tbody>
+</table>
+<h2 id="getting-help_1">Getting Help</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>man &lt;command&gt;</code></td>
+<td>Full manual page</td>
+</tr>
+<tr>
+<td><code>&lt;command&gt; --help</code></td>
+<td>Quick help summary</td>
+</tr>
+<tr>
+<td><code>which &lt;program&gt;</code></td>
+<td>Find where a program is installed</td>
+</tr>
+<tr>
+<td><code>module spider &lt;name&gt;</code></td>
+<td>Search for available software modules</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="next-steps">Next Steps</h1>
+<p>Once you're comfortable with the basics covered here, explore:</p>
+<ul>
+<li><strong><code>nano</code> or <code>vim</code></strong>: Terminal text editors for editing scripts directly on the cluster</li>
+<li><strong><code>screen</code> or <code>tmux</code></strong>: Keep sessions running after you disconnect from SSH</li>
+<li><strong>Shell scripting</strong>: Writing <code>.sh</code> scripts to automate pipelines (like writing R functions to wrap repeated code)</li>
+<li><strong><code>awk</code> and <code>sed</code></strong>: Powerful text-processing tools for manipulating tabular data</li>
+<li><strong><code>scp</code> and <code>rsync</code></strong>: Transfer files to and from HiPerGator</li>
+<li><strong>SLURM arrays</strong>: Submit hundreds of parallel jobs with a single <code>sbatch</code> command</li>
+</ul>
+<hr />
+<h1 id="resources">Resources</h1>
+<ul>
+<li><a href="https://help.rc.ufl.edu/">UF Research Computing HiPerGator Documentation</a></li>
+<li><a href="https://slurm.schedmd.com/documentation.html">SLURM Documentation</a></li>
+<li><a href="https://linuxcommand.org/tlcl.php">The Linux Command Line (free book)</a> by William Shotts</li>
+<li><a href="https://swcarpentry.github.io/shell-novice/">Software Carpentry: The Unix Shell</a></li>
+<li><a href="https://explainshell.com/">Explain Shell</a> — paste any command to get a plain-English explanation</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2026 UF Health Cancer Institute Biostatistics and Computational Biology Shared Resource
+
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "toc.integrate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
