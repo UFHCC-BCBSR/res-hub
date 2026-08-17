@@ -17,9 +17,8 @@ _The UFHCC BCB-SR Bioinformatics and Computational Biology Journal Club is runni
 ### September 11, 2026 — First Meeting
 
 **Technical paper:**  
-[Accurate chromatin marks peak calling with Omnipeak](https://academic.oup.com/nar/article/54/1/gkaf1454/8418219) — _Shpynov & Artyomov, Nucleic Acids Research, January 2026_
 
-Introduces Omnipeak, an unsupervised peak caller built on a constrained three-state hidden Markov model, designed as a single tool that handles the full range of chromatin signal widths rather than specializing in narrow or broad marks. The authors benchmark it against eight existing peak callers across more than 550 public and 300 synthetic datasets, spanning conventional ChIP-seq, ultra-low-input ChIP-seq, and ATAC-seq, and evaluate replicate consistency, agreement with ground truth, tolerance to noise, and behavior when control tracks are missing.
+To Be Announced. Check back soon!
 
 **Applications paper:**  
 [Explainable machine learning-guided integrated multiomics analysis reveals macrophage-driven immune suppression in breast cancer](https://www.nature.com/articles/s41467-026-73617-9) — _Azimzade et al., Nature Communications, May 2026_
